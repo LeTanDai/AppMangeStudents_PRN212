@@ -3,13 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35208.52
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessObjects", "BusinessObjects\BusinessObjects.csproj", "{2BDA7421-FB75-431F-8A0D-6CCC58E6DEB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessObjects", "BusinessObjects\BusinessObjects.csproj", "{2BDA7421-FB75-431F-8A0D-6CCC58E6DEB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{F2693B04-2E44-4BA3-9E4B-802F38368A3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{F2693B04-2E44-4BA3-9E4B-802F38368A3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositories", "Repositories\Repositories.csproj", "{687555E0-3F5D-4B71-ABA0-D70D276968E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repositories", "Repositories\Repositories.csproj", "{687555E0-3F5D-4B71-ABA0-D70D276968E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFApp", "WPFApp\WPFApp.csproj", "{B8B91C5A-4475-4445-9D5B-28A176C35BEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFApp", "WPFApp\WPFApp.csproj", "{B8B91C5A-4475-4445-9D5B-28A176C35BEA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{013FFA82-0229-4A88-B5A0-A8B0E3097669}"
+	ProjectSection(SolutionItems) = preProject
+		Images\back-image.jpg = Images\back-image.jpg
+		Images\back-image1.jpg = Images\back-image1.jpg
+		Images\bk.jpg = Images\bk.jpg
+		Images\logo_1.png = Images\logo_1.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
