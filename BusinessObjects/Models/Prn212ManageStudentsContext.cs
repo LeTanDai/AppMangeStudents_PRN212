@@ -17,6 +17,8 @@ public partial class Prn212ManageStudentsContext : DbContext
 
     public virtual DbSet<Admin> Admins { get; set; }
 
+    public virtual DbSet<Assign> Assigns { get; set; }
+
     public virtual DbSet<Class> Classes { get; set; }
 
     public virtual DbSet<Mark> Marks { get; set; }
@@ -35,7 +37,7 @@ public partial class Prn212ManageStudentsContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=PHUCNVH;Database=PRN212_ManageStudents;User Id=sa;Password=1234567;TrustServerCertificate=true;Trusted_Connection=SSPI;Encrypt=false;");
+        => optionsBuilder.UseSqlServer("Data Source=PHUCNVH;\nDatabase=PRN212_ManageStudents;User Id=sa;Password=1234567;\nTrusted_Connection=SSPI;Encrypt=false;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -58,9 +60,44 @@ public partial class Prn212ManageStudentsContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.Phone)
-                .HasMaxLength(11)
+                .HasMaxLength(10)
                 .IsUnicode(false)
                 .HasColumnName("phone");
+        });
+
+        modelBuilder.Entity<Assign>(entity =>
+        {
+            entity.HasKey(e => e.AssignId).HasName("PK__Assign__A12B80732D649C89");
+
+            entity.ToTable("Assign");
+
+            entity.Property(e => e.AssignId).HasColumnName("assignID");
+            entity.Property(e => e.Idsubject)
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .HasColumnName("IDSubject");
+            entity.Property(e => e.Idteacher)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("IDTeacher");
+            entity.Property(e => e.NameClass)
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .HasColumnName("nameClass");
+            entity.Property(e => e.SchoolYear)
+                .HasMaxLength(9)
+                .IsUnicode(false)
+                .HasColumnName("schoolYear");
+
+            entity.HasOne(d => d.TeacherSubject).WithMany(p => p.Assigns)
+                .HasForeignKey(d => new { d.Idteacher, d.Idsubject })
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Assign_Teacher_Subject");
+
+            entity.HasOne(d => d.Class).WithMany(p => p.Assigns)
+                .HasForeignKey(d => new { d.NameClass, d.SchoolYear })
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Assign_Class");
         });
 
         modelBuilder.Entity<Class>(entity =>
@@ -77,14 +114,6 @@ public partial class Prn212ManageStudentsContext : DbContext
                 .HasMaxLength(9)
                 .IsUnicode(false)
                 .HasColumnName("schoolYear");
-            entity.Property(e => e.Idteacher)
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("IDTeacher");
-
-            entity.HasOne(d => d.IdteacherNavigation).WithMany(p => p.Classes)
-                .HasForeignKey(d => d.Idteacher)
-                .HasConstraintName("FK_Class_Teacher");
         });
 
         modelBuilder.Entity<Mark>(entity =>
@@ -206,7 +235,7 @@ public partial class Prn212ManageStudentsContext : DbContext
                 .HasMaxLength(10)
                 .IsUnicode(false)
                 .HasColumnName("IDSubject");
-            entity.Property(e => e.NameSubject).HasMaxLength(50);
+            entity.Property(e => e.NameSubject).HasMaxLength(100);
         });
 
         modelBuilder.Entity<Teacher>(entity =>
@@ -263,39 +292,6 @@ public partial class Prn212ManageStudentsContext : DbContext
                 .HasForeignKey(d => d.Idteacher)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Teacher_Subject_Teacher");
-
-            entity.HasMany(d => d.Classes).WithMany(p => p.TeacherSubjects)
-                .UsingEntity<Dictionary<string, object>>(
-                    "Assign",
-                    r => r.HasOne<Class>().WithMany()
-                        .HasForeignKey("NameClass", "SchoolYear")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK_Assign_Class"),
-                    l => l.HasOne<TeacherSubject>().WithMany()
-                        .HasForeignKey("Idteacher", "Idsubject")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK_Assign_Teacher_Subject"),
-                    j =>
-                    {
-                        j.HasKey("Idteacher", "Idsubject", "NameClass", "SchoolYear");
-                        j.ToTable("Assign");
-                        j.IndexerProperty<string>("Idteacher")
-                            .HasMaxLength(20)
-                            .IsUnicode(false)
-                            .HasColumnName("IDTeacher");
-                        j.IndexerProperty<string>("Idsubject")
-                            .HasMaxLength(10)
-                            .IsUnicode(false)
-                            .HasColumnName("IDSubject");
-                        j.IndexerProperty<string>("NameClass")
-                            .HasMaxLength(10)
-                            .IsUnicode(false)
-                            .HasColumnName("nameClass");
-                        j.IndexerProperty<string>("SchoolYear")
-                            .HasMaxLength(9)
-                            .IsUnicode(false)
-                            .HasColumnName("schoolYear");
-                    });
         });
 
         OnModelCreatingPartial(modelBuilder);

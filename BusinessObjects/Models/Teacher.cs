@@ -21,7 +21,5 @@ public partial class Teacher
 
     public string? IsActive { get; set; }
 
-    public virtual ICollection<Class> Classes { get; set; } = new List<Class>();
-
     public virtual ICollection<TeacherSubject> TeacherSubjects { get; set; } = new List<TeacherSubject>();
 }
