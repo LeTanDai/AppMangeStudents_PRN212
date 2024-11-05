@@ -11,14 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repositories", "Repositorie
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFApp", "WPFApp\WPFApp.csproj", "{B8B91C5A-4475-4445-9D5B-28A176C35BEA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{013FFA82-0229-4A88-B5A0-A8B0E3097669}"
-	ProjectSection(SolutionItems) = preProject
-		Images\back-image.jpg = Images\back-image.jpg
-		Images\back-image1.jpg = Images\back-image1.jpg
-		Images\bk.jpg = Images\bk.jpg
-		Images\logo_1.png = Images\logo_1.png
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
