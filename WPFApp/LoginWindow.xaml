@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
-                Title="MainWindow" Height="650" Width="800"
+                Title="LoginWindow" Height="650" Width="800"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Storyboard x:Key="FadeIn">
@@ -21,38 +21,38 @@
         </Grid.ColumnDefinitions>
 
         <!-- Background Image -->
-        <Image Source="/bk.jpg" Grid.ColumnSpan="2" Stretch="Fill" Opacity="0.3"/>
+        <Image Source="/Images/bk.jpg" Grid.ColumnSpan="2" Stretch="Fill" Opacity="0.3"/>
 
         <!-- Sign In Section -->
         <StackPanel Grid.Column="0" HorizontalAlignment="Center" Name="SignInPanel" Opacity="1">
-            <Image Source="/logo_1.png" Width="100" Height="100" Margin="0,20,0,10"/>
-            <TextBlock Text="Đăng Nhập" FontWeight="Bold"
+            <Image Source="/Images/logo_1.png" Width="100" Height="100" Margin="0,20,0,10"/>
+            <TextBlock Text="Login" FontWeight="Bold" TextAlignment="Center"
                        Margin="0 10 0 0" FontFamily="Arial" FontSize="50" Foreground="MediumSeaGreen"/>
             <StackPanel Margin="0 10 0 0">
-                <TextBlock Text="Loại tài khoản" Margin="0 0 0 5"/>
-                <ComboBox x:Name="myComboBox" Width="200" Height="30" Margin="0 0 0 10" >
+                <TextBlock Text="Account Type" Margin="0 0 0 5"/>
+                <ComboBox x:Name="cbxTypeAccount" Width="200" Height="30" Margin="0 0 0 10" >
                     <ComboBoxItem Content="Admin" />
                     <ComboBoxItem Content="Teacher" />
                     <ComboBoxItem Content="Student" />
                 </ComboBox>
             </StackPanel>
             <StackPanel Margin="0 10 0 0">
-                <Label Content="Tài Khoản" />
-                <TextBox Width="200" VerticalAlignment="Center"/>
+                <Label Content="ID" />
+                <TextBox x:Name="txtAccountID"  Width="200" VerticalAlignment="Center"/>
             </StackPanel>
             <StackPanel Margin="0 10 0 0">
-                <Label Content="Mật khẩu" />
-                <PasswordBox Width="200" VerticalAlignment="Center"/>
+                <Label Content="Password" />
+                <PasswordBox x:Name="txtPassword" Width="200" VerticalAlignment="Center"/>
             </StackPanel>
-            <CheckBox HorizontalAlignment="Right" Content="Nhớ mật khẩu" Margin="0, 25, 30, 0"/>
+            <CheckBox x:Name="chkRememberMe" HorizontalAlignment="Right" Content="Remember Me" Margin="0, 25, 30, 0"/>
 
             <!-- Nút Đăng Nhập -->
-            <Button Content="Đăng Nhập" Width="200" Height="40" Margin="0,20,0,0" Background="MediumSeaGreen" Foreground="White" Click="LoginButton_Click"/>
+            <Button Content="Login" Width="200" Height="40" Margin="0,20,0,0" Background="MediumSeaGreen" Foreground="White" Click="LoginButton_Click"/>
 
             <!-- Bạn chưa có tài khoản? -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 25, 0, 0">
-                <TextBlock Text="Bạn chưa có tài khoản?" FontSize="16"/>
-                <TextBlock FontSize="16" Cursor="Hand" Text=" Đăng ký" MouseDown="ShowSignUp" Foreground="Blue">
+                <TextBlock Text="Don't have an account?" FontSize="16"/>
+                <TextBlock FontSize="16" Cursor="Hand" Text=" Sign Up" MouseDown="ShowSignUp" Foreground="Blue">
                     <TextBlock.Style>
                         <Style TargetType="TextBlock">
                             <Style.Triggers>
@@ -69,36 +69,36 @@
 
         <!-- Sign Up Section -->
         <StackPanel Grid.Column="0" HorizontalAlignment="Center" Name="SignUpPanel" Opacity="0" Visibility="Collapsed">
-            <Image Source="/logo_1.png" Width="100" Height="100" Margin="0,20,0,10"/>
-            <TextBlock Text="Đăng Ký" FontWeight="Bold"
+            <Image Source="/Images/logo_1.png" Width="100" Height="100" Margin="0,20,0,10"/>
+            <TextBlock Text="Sign Up" FontWeight="Bold"
                        Margin="0 20 0 0" FontFamily="Arial" FontSize="50" Foreground="MediumSeaGreen"/>
             <StackPanel Margin="0 10 0 0">
-                <TextBlock Text="Loại tài khoản" Margin="0 0 0 5"/>
-                <ComboBox x:Name="myComboBox_1" Width="200" Height="30" Margin="0 0 0 10">
+                <TextBlock Text="Account Type" Margin="0 0 0 5"/>
+                <ComboBox x:Name="cbxTypeAccountSignUp" Width="200" Height="30" Margin="0 0 0 10">
                     <ComboBoxItem Content="Teacher" />
                     <ComboBoxItem Content="Student" />
                 </ComboBox>
             </StackPanel>
             <StackPanel Margin="0 10 0 0">
-                <Label Content="Tài Khoản" />
-                <TextBox Width="200" VerticalAlignment="Center"/>
+                <Label Content="ID" />
+                <TextBox x:Name="txtAccountSignUp" Width="200" VerticalAlignment="Center"/>
             </StackPanel>
             <StackPanel Margin="0 10 0 0">
-                <Label Content="Mật khẩu" />
-                <PasswordBox Width="200" VerticalAlignment="Center"/>
+                <Label Content="Password" />
+                <PasswordBox x:Name="txtPasswordSignUp" Width="200" VerticalAlignment="Center"/>
             </StackPanel>
             <StackPanel Margin="0 10 0 0">
-                <Label Content="Xác nhận mật khẩu" />
-                <PasswordBox Width="200" VerticalAlignment="Center"/>
+                <Label Content="Confirm Password" />
+                <PasswordBox x:Name="txtPasswordSignUpCheck" Width="200" VerticalAlignment="Center"/>
             </StackPanel>
 
             <!-- Nút Đăng Ký -->
-            <Button Content="Đăng Ký" Width="200" Height="40" Margin="0,20,0,0" Background="MediumSeaGreen" Foreground="White" Click="SignUpButton_Click"/>
+            <Button Content="Sign Up" Width="200" Height="40" Margin="0,20,0,0" Background="MediumSeaGreen" Foreground="White" Click="SignUpButton_Click"/>
 
             <!-- Bạn đã có tài khoản rồi? -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 25, 0, 0">
-                <TextBlock Text="Bạn đã có tài khoản rồi?" FontSize="16"/>
-                <TextBlock FontSize="16" Cursor="Hand" Text=" Quay lại" MouseDown="ShowSignIn" Foreground="Blue">
+                <TextBlock Text="Already have an account?" FontSize="16"/>
+                <TextBlock FontSize="16" Cursor="Hand" Text=" Go back" MouseDown="ShowSignIn" Foreground="Blue">
                     <TextBlock.Style>
                         <Style TargetType="TextBlock">
                             <Style.Triggers>
@@ -115,19 +115,19 @@
 
         <!-- Phần trang trí (Text hoặc hình ảnh) -->
         <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="350">
-            <TextBlock Text="Chào mừng đến với ứng dụng của chúng tôi!" 
+            <TextBlock Text="Welcome to our application!" 
                        FontSize="22" 
                        FontWeight="Bold" 
                        Foreground="MediumSeaGreen" 
                        TextAlignment="Center" 
                        Margin="0,10,0,0" 
                        TextWrapping="Wrap"/>
-            <TextBlock Text="Hãy đăng ký để trải nghiệm các tính năng thú vị." 
+            <TextBlock Text="Sign up now to discover exciting features that will enhance your learning experience and optimize your student management!"
                        FontSize="16" 
                        TextAlignment="Center" 
                        Margin="0,10,0,0" 
                        TextWrapping="Wrap"/>
-            <Image Source="/back-image.jpg" Height="350" />
+            <Image Source="/Images/back-image.jpg" Height="350" />
         </StackPanel>
     </Grid>
 </Window>

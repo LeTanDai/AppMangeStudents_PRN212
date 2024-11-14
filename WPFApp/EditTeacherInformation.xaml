@@ -1,0 +1,140 @@
+﻿<Window x:Class="WPFApp.EditTeacherInformation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFApp"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+         Loaded="Window_Loaded"
+        Title="EditTeacherInformation" Height="650" Width="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Background="DarkSlateGray" Width="200">
+            <StackPanel Margin="10">
+                <!-- User Info -->
+                <Image Source="C:\Users\Admin\source\repos\AppManageBackup\WPFApp\Images\logo_1.png" Width="100" Height="100" HorizontalAlignment="Center"/>
+                <TextBlock Text="Nguyễn Văn Hoàng Phúc" Foreground="White" FontWeight="Bold" FontSize="14" TextAlignment="Center"/>
+                <TextBlock Text="Teacher FPTU" Foreground="White" FontSize="12" TextAlignment="Center"/>
+            </StackPanel>
+
+            <!-- Menu Items -->
+            <StackPanel Margin="10" VerticalAlignment="Top">
+                <Button Content="My Information" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
+                <Button Content="Search Student" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
+                <Button Content="Update Score" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
+                <Button Content="Add Student" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
+                <Button Content="Manage Classes" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
+                <Button Content="Manage Students" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
+                <Button Content="Manage Teachers" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
+                <Button Content="Report" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5" Click="Button_Click_1"/>
+                <Button Content="Regulations" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5" Click="Button_Click"/>
+            </StackPanel>
+        </StackPanel>
+        <Rectangle Fill="DarkSlateGray" HorizontalAlignment="Left" Height="55" Margin="154,0,0,0" VerticalAlignment="Top" Width="869" Grid.ColumnSpan="2"/>
+        <Rectangle Fill="DarkSlateGray" HorizontalAlignment="Left" Height="55" Margin="0,579,0,0" VerticalAlignment="Top" Width="869" Grid.Column="1"/>
+        <Grid Margin="0,10,0,0" Grid.ColumnSpan="2">
+            <Image Source="C:\Users\Admin\source\repos\AppManageBackup\WPFApp\img\icons\addstudent_avatar.png" Margin="203,205,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="162" Width="219"/>
+            <Label Content="ID:" HorizontalAlignment="Left" Margin="395,149,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Width="128" Height="34"/>
+            <Label Content="Date of birth:"  HorizontalAlignment="Left" Margin="397,269,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+            <Label Content="Gender:"  HorizontalAlignment="Left" Margin="397,353,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+            <Label Content="Email:"  HorizontalAlignment="Left" Margin="397,311,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+            <Label Content="Phone Number:"  HorizontalAlignment="Left" Margin="397,395,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+            <TextBox
+                x:Name="txtTeacherid"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="602,154,0,0"
+                Width="242"
+                FontSize="15"
+                Background="#F0F0F0"
+                Foreground="Black"
+                VerticalContentAlignment="Center" Height="29" TextChanged="txtStudentid_TextChanged" />
+            <Label Content="Update information"  HorizontalAlignment="Left" Margin="395,74,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" Width="381" Height="51"/>
+            <Label Content="Password"  HorizontalAlignment="Left" Margin="395,227,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+            <Label Content="Full name:" HorizontalAlignment="Left" Margin="395,188,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Width="128" Height="34"/>
+            <TextBox
+                x:Name="txtTeachername"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="602,193,0,0"
+                Width="241"
+                FontSize="15"
+                Background="#F0F0F0"
+                Foreground="Black"
+                VerticalContentAlignment="Center" Height="29" />
+            <TextBox
+                x:Name="txtTeacherPassword"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="602,235,0,0"
+                Width="241"
+                FontSize="15"
+                Background="#F0F0F0"
+                Foreground="Black"
+                VerticalContentAlignment="Center" Height="29" />
+            <DatePicker
+                x:Name="dpTeacherdob"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="602,269,0,0"
+                Width="241"
+                FontSize="20"
+                BorderThickness="1"
+                BorderBrush="Gray"
+                Padding="5"
+                Background="#F0F0F0"
+                Foreground="Black"
+                SelectedDateFormat="Short"
+                Height="37" />
+
+            <TextBox
+                x:Name="txtTeacheremail"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="602,319,0,0"
+                Width="241"
+                FontSize="15"
+                Background="#F0F0F0"
+                Foreground="Black"
+                VerticalContentAlignment="Center" Height="29" />
+            <TextBox
+                x:Name="txtTeachergender"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="602,361,0,0"
+                Width="241"
+                FontSize="15"
+                Background="#F0F0F0"
+                Foreground="Black"
+                VerticalContentAlignment="Center" Height="29"/>
+            <TextBox
+                x:Name="txtTeacherphone"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="602,403,0,0"
+                Width="241"
+                FontSize="15"
+                Background="#F0F0F0"
+                Foreground="Black"
+                VerticalContentAlignment="Center" Height="29" />
+            <Button Padding="0" x:Name="btnCancel_Copy" HorizontalAlignment="Left" Margin="822,584,0,0" VerticalAlignment="Top" Width="75" Click="btnCancel_click" Background="#FFF32121" BorderBrush="#FFF32121">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/img/icons/remove_btn.png" Margin="-2,0,0,0" Height="25" Width="25"/>
+                    <TextBlock Margin="2,0,0,0" Height="20"><Run Text="Cancel"/></TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Padding="0" x:Name="btnDoneOfAddUser_Copy" HorizontalAlignment="Left" Margin="920,584,0,0" VerticalAlignment="Top" Width="70" Click="btnDoneofAddUser_click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/img/icons/done_btn.png" Margin="-2,0,0,0" Height="25" Width="25"/>
+                    <TextBlock Margin="2,0,0,0" Height="20"><Run Text="Done"/></TextBlock>
+                </StackPanel>
+            </Button>
+
+        </Grid>
+
+    </Grid>
+</Window>

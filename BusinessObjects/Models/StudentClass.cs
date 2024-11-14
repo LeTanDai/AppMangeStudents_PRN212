@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BusinessObjects;
+namespace BusinessObjects.Models;
 
 public partial class StudentClass
 {
@@ -10,4 +10,10 @@ public partial class StudentClass
     public string NameClass { get; set; } = null!;
 
     public string SchoolYear { get; set; } = null!;
+
+    public virtual Class Class { get; set; } = null!;
+
+    public virtual Student IdstudentNavigation { get; set; } = null!;
+
+    public virtual ICollection<Mark> Marks { get; set; } = new List<Mark>();
 }

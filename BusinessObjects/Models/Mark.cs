@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BusinessObjects;
+namespace BusinessObjects.Models;
 
 public partial class Mark
 {
@@ -30,4 +30,8 @@ public partial class Mark
     public string NameClass { get; set; } = null!;
 
     public string SchoolYear { get; set; } = null!;
+
+    public virtual Subject IdsubjectNavigation { get; set; } = null!;
+
+    public virtual StudentClass StudentClass { get; set; } = null!;
 }

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BusinessObjects;
+namespace BusinessObjects.Models;
 
-public partial class Student
+public partial class Teacher
 {
-    public string Idstudent { get; set; } = null!;
+    public string Idteacher { get; set; } = null!;
 
     public string? Name { get; set; }
 
@@ -20,4 +20,6 @@ public partial class Student
     public string? PassWord { get; set; }
 
     public string? IsActive { get; set; }
+
+    public virtual ICollection<TeacherSubject> TeacherSubjects { get; set; } = new List<TeacherSubject>();
 }

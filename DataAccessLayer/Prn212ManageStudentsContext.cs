@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-
-namespace BusinessObjects;
+using BusinessObjects.Models;
+using Microsoft.Extensions.Configuration;
+namespace DataAccessLayer;
 
 public partial class Prn212ManageStudentsContext : DbContext
 {
@@ -35,9 +36,21 @@ public partial class Prn212ManageStudentsContext : DbContext
 
     public virtual DbSet<TeacherSubject> TeacherSubjects { get; set; }
 
+    private string GetConnectionString()
+    {
+        IConfiguration configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", true, true).Build();
+        return configuration["ConnectionStrings:MyStockDB"];
+    }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=QCU;Database=PRN212_ManageStudents;User Id=cuong;Password=cuong1234;TrustServerCertificate=true;Trusted_Connection=SSPI;Encrypt=false;");
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            string connect = GetConnectionString();
+            optionsBuilder.UseSqlServer(connect);
+        }
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -60,25 +73,26 @@ public partial class Prn212ManageStudentsContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.Phone)
-                .HasMaxLength(11)
+                .HasMaxLength(10)
                 .IsUnicode(false)
                 .HasColumnName("phone");
         });
 
         modelBuilder.Entity<Assign>(entity =>
         {
-            entity.HasKey(e => new { e.Idteacher, e.Idsubject, e.NameClass, e.SchoolYear });
+            entity.HasKey(e => e.AssignId).HasName("PK__Assign__A12B80732D649C89");
 
             entity.ToTable("Assign");
 
-            entity.Property(e => e.Idteacher)
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("IDTeacher");
+            entity.Property(e => e.AssignId).HasColumnName("assignID");
             entity.Property(e => e.Idsubject)
                 .HasMaxLength(10)
                 .IsUnicode(false)
                 .HasColumnName("IDSubject");
+            entity.Property(e => e.Idteacher)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("IDTeacher");
             entity.Property(e => e.NameClass)
                 .HasMaxLength(10)
                 .IsUnicode(false)
@@ -87,6 +101,16 @@ public partial class Prn212ManageStudentsContext : DbContext
                 .HasMaxLength(9)
                 .IsUnicode(false)
                 .HasColumnName("schoolYear");
+
+            entity.HasOne(d => d.TeacherSubject).WithMany(p => p.Assigns)
+                .HasForeignKey(d => new { d.Idteacher, d.Idsubject })
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Assign_Teacher_Subject");
+
+            entity.HasOne(d => d.Class).WithMany(p => p.Assigns)
+                .HasForeignKey(d => new { d.NameClass, d.SchoolYear })
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Assign_Class");
         });
 
         modelBuilder.Entity<Class>(entity =>
@@ -103,10 +127,6 @@ public partial class Prn212ManageStudentsContext : DbContext
                 .HasMaxLength(9)
                 .IsUnicode(false)
                 .HasColumnName("schoolYear");
-            entity.Property(e => e.Idteacher)
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("IDTeacher");
         });
 
         modelBuilder.Entity<Mark>(entity =>
@@ -134,6 +154,16 @@ public partial class Prn212ManageStudentsContext : DbContext
                 .HasMaxLength(9)
                 .IsUnicode(false)
                 .HasColumnName("schoolYear");
+
+            entity.HasOne(d => d.IdsubjectNavigation).WithMany(p => p.Marks)
+                .HasForeignKey(d => d.Idsubject)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Mark_Subject");
+
+            entity.HasOne(d => d.StudentClass).WithMany(p => p.Marks)
+                .HasForeignKey(d => new { d.Idstudent, d.NameClass, d.SchoolYear })
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Mark_Student_Class");
         });
 
         modelBuilder.Entity<Rule>(entity =>
@@ -196,6 +226,16 @@ public partial class Prn212ManageStudentsContext : DbContext
                 .HasMaxLength(9)
                 .IsUnicode(false)
                 .HasColumnName("schoolYear");
+
+            entity.HasOne(d => d.IdstudentNavigation).WithMany(p => p.StudentClasses)
+                .HasForeignKey(d => d.Idstudent)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Student_Class_Student");
+
+            entity.HasOne(d => d.Class).WithMany(p => p.StudentClasses)
+                .HasForeignKey(d => new { d.NameClass, d.SchoolYear })
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Student_Class_Class");
         });
 
         modelBuilder.Entity<Subject>(entity =>
@@ -208,7 +248,7 @@ public partial class Prn212ManageStudentsContext : DbContext
                 .HasMaxLength(10)
                 .IsUnicode(false)
                 .HasColumnName("IDSubject");
-            entity.Property(e => e.NameSubject).HasMaxLength(70);
+            entity.Property(e => e.NameSubject).HasMaxLength(100);
         });
 
         modelBuilder.Entity<Teacher>(entity =>
@@ -255,6 +295,16 @@ public partial class Prn212ManageStudentsContext : DbContext
                 .HasMaxLength(10)
                 .IsUnicode(false)
                 .HasColumnName("IDSubject");
+
+            entity.HasOne(d => d.IdsubjectNavigation).WithMany(p => p.TeacherSubjects)
+                .HasForeignKey(d => d.Idsubject)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Teacher_Subject_Subject");
+
+            entity.HasOne(d => d.IdteacherNavigation).WithMany(p => p.TeacherSubjects)
+                .HasForeignKey(d => d.Idteacher)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Teacher_Subject_Teacher");
         });
 
         OnModelCreatingPartial(modelBuilder);
