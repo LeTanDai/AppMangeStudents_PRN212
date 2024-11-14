@@ -9,6 +9,8 @@ namespace Repositories
 {
     public interface IStudentRepository
     {
+        IEnumerable<Student> GetAllStudent();
+
         void CreateStudent(Student student);
         void DeleteStudent(Student student);
         void UpdateStudent(Student student);

@@ -28,6 +28,11 @@ namespace DataAccessLayer
             }
         }
 
+        public IEnumerable<StudentClass> GetAllStudentClasses()
+        {
+            using var _context = new Prn212ManageStudentsContext();
+            return _context.StudentClasses.ToList();
+        }
         public void CreateStudentClass(StudentClass studentClass)
         {
             using (var db = new Prn212ManageStudentsContext())
@@ -107,5 +112,6 @@ namespace DataAccessLayer
                 }
             }
         }
+        
     }
 }

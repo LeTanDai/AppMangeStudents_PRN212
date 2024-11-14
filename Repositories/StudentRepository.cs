@@ -10,6 +10,7 @@ namespace Repositories
 {
     public class StudentRepository : IStudentRepository
     {
+        public IEnumerable<Student> GetAllStudent() => StudentDAO.Instance.GetAllStudent();
         public void CreateStudent(Student student) => StudentDAO.Instance.CreateStudent(student);
         public void DeleteStudent(Student student) => StudentDAO.Instance.DeleteStudent(student);
         public void UpdateStudent(Student student) => StudentDAO.Instance.UpdateStudent(student);

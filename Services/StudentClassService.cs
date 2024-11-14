@@ -15,6 +15,11 @@ namespace Services
         {
             iStudentClassRepository = new StudentClassRepository();
         }
+        public IEnumerable<StudentClass> GetAllStudentClasses()
+        {
+            return iStudentClassRepository.GetAllStudentClasses();
+        }
+
         public void CreateStudentClass(StudentClass student)
         {
             iStudentClassRepository.CreateStudentClass(student);

@@ -12,6 +12,8 @@
     <None Remove="Images\back-image.jpg" />
     <None Remove="Images\back-image1.jpg" />
     <None Remove="Images\bk.jpg" />
+    <None Remove="Images\icons\loading-arrow.png" />
+    <None Remove="Images\icons\manageuser_avatar.png" />
     <None Remove="Images\logo_1.png" />
   </ItemGroup>
 
@@ -38,10 +40,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\back-image.jpg" />
-    <Resource Include="Images\back-image1.jpg" />
-    <Resource Include="Images\bk.jpg" />
-    <Resource Include="Images\logo_1.png" />
+    <Resource Include="Images\icons\loading-arrow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\icons\manageuser_avatar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
