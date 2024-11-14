@@ -50,5 +50,15 @@ namespace WPFApp
         {
 
         }
+
+        private void Btn_Info(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_Score(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

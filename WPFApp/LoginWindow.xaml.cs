@@ -67,8 +67,8 @@ namespace WPFApp
                 {
                     SaveLoginInfo(id, password);
                     this.Hide();
-                    MainWindow mainWindow = new MainWindow();
-                    mainWindow.Show();
+                    AdminInformation adminInformation = new AdminInformation(id);
+                    adminInformation.Show();
                     return;
                 }
             } else if (type.Equals("Student"))

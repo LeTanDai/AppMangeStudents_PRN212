@@ -9,9 +9,80 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="img\icons\addstudent_avatar.png" />
+    <None Remove="img\icons\adduser.png" />
+    <None Remove="img\icons\adduser_avatar.png" />
+    <None Remove="img\icons\admin_avatar.png" />
+    <None Remove="img\icons\admin_icon_white.png" />
+    <None Remove="img\icons\done_btn.png" />
+    <None Remove="img\icons\edit_btn.png" />
+    <None Remove="img\icons\logout_btn.png" />
+    <None Remove="img\icons\logo_app_desktop.png" />
+    <None Remove="img\icons\logo_icon.png" />
+    <None Remove="img\icons\logo_icon_white.png" />
+    <None Remove="img\icons\manageclass.png" />
+    <None Remove="img\icons\managestudent.png" />
+    <None Remove="img\icons\managesutdent.png" />
+    <None Remove="img\icons\manageteacher.png" />
+    <None Remove="img\icons\manageuser.png" />
+    <None Remove="img\icons\manageuser_avatar.png" />
+    <None Remove="img\icons\myinformation.png" />
+    <None Remove="img\icons\myscore.png" />
+    <None Remove="img\icons\pass_icon.png" />
+    <None Remove="img\icons\remove_btn.png" />
+    <None Remove="img\icons\report.png" />
+    <None Remove="img\icons\role.png" />
+    <None Remove="img\icons\searchstudent.png" />
+    <None Remove="img\icons\student_avatar.png" />
+    <None Remove="img\icons\student_icon_white.png" />
+    <None Remove="img\icons\teacher_avatar.png" />
+    <None Remove="img\icons\teacher_icon_white.png" />
+    <None Remove="img\icons\updatescore.png" />
+    <None Remove="img\icons\user_icon.png" />
+    <None Remove="img\icons\viewscore.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="img\icons\logout_btn.png" />
+    <Resource Include="img\icons\logo_icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BusinessObjects\BusinessObjects.csproj" />
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
     <ProjectReference Include="..\Repositories\Repositories.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="img\icons\addstudent_avatar.png" />
+    <Resource Include="img\icons\adduser.png" />
+    <Resource Include="img\icons\adduser_avatar.png" />
+    <Resource Include="img\icons\admin_avatar.png" />
+    <Resource Include="img\icons\admin_icon_white.png" />
+    <Resource Include="img\icons\done_btn.png" />
+    <Resource Include="img\icons\edit_btn.png" />
+    <Resource Include="img\icons\logo_app_desktop.png" />
+    <Resource Include="img\icons\logo_icon_white.png" />
+    <Resource Include="img\icons\manageclass.png" />
+    <Resource Include="img\icons\managestudent.png" />
+    <Resource Include="img\icons\managesutdent.png" />
+    <Resource Include="img\icons\manageteacher.png" />
+    <Resource Include="img\icons\manageuser.png" />
+    <Resource Include="img\icons\manageuser_avatar.png" />
+    <Resource Include="img\icons\myinformation.png" />
+    <Resource Include="img\icons\myscore.png" />
+    <Resource Include="img\icons\pass_icon.png" />
+    <Resource Include="img\icons\remove_btn.png" />
+    <Resource Include="img\icons\report.png" />
+    <Resource Include="img\icons\role.png" />
+    <Resource Include="img\icons\searchstudent.png" />
+    <Resource Include="img\icons\student_avatar.png" />
+    <Resource Include="img\icons\student_icon_white.png" />
+    <Resource Include="img\icons\teacher_avatar.png" />
+    <Resource Include="img\icons\teacher_icon_white.png" />
+    <Resource Include="img\icons\updatescore.png" />
+    <Resource Include="img\icons\user_icon.png" />
+    <Resource Include="img\icons\viewscore.png" />
   </ItemGroup>
 
   <ItemGroup>

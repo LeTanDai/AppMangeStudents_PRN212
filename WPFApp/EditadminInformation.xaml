@@ -1,0 +1,112 @@
+﻿<Window x:Class="WPFApp.EditadminInformation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFApp"
+        mc:Ignorable="d"
+           Loaded="Window_Loaded"
+    Title="Edit admin information" Height="450" Width="800">
+    <Grid>
+        <Grid Margin="-106,-66,0,0">
+            <Image Source="img/icons/admin_avatar.png" Margin="161,198,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="162" Width="219"/>
+            <Label Content="ID:" HorizontalAlignment="Left" Margin="365,149,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Width="128" Height="34"/>
+            <Label Content="Date of birth:"  HorizontalAlignment="Left" Margin="365,269,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+            <Label Content="Gender:"  HorizontalAlignment="Left" Margin="365,353,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+            <Label Content="Email:"  HorizontalAlignment="Left" Margin="365,311,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+            <Label Content="Phone Number:"  HorizontalAlignment="Left" Margin="365,395,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+            <TextBox
+x:Name="txtAdminid"
+HorizontalAlignment="Left"
+VerticalAlignment="Top"
+Margin="526,154,0,0"
+Width="242"
+FontSize="15"
+Background="#F0F0F0"
+Foreground="Black"
+VerticalContentAlignment="Center" Height="29" TextChanged="txtAdminid_TextChanged" />
+            <Label Content="Update information"  HorizontalAlignment="Left" Margin="365,98,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" Width="381" Height="51"/>
+            <Label Content="Password"  HorizontalAlignment="Left" Margin="365,227,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+            <Label Content="Full name:" HorizontalAlignment="Left" Margin="365,188,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Width="128" Height="34"/>
+            <Rectangle Fill="DarkSlateGray" HorizontalAlignment="Left" Height="52" Margin="105,448,0,0" VerticalAlignment="Top" Width="801"/>
+            <Rectangle Fill="DarkSlateGray" HorizontalAlignment="Left" Height="47" Margin="104,65,0,0" VerticalAlignment="Top" Width="802"/>
+            <TextBox
+            x:Name="txtAdminname"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="526,193,0,0"
+            Width="241"
+               FontSize="15"
+Background="#F0F0F0"
+Foreground="Black"
+VerticalContentAlignment="Center" Height="29" />
+            <TextBox
+            x:Name="txtAdminPassword"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="526,235,0,0"
+            Width="241"
+                FontSize="15"
+Background="#F0F0F0"
+Foreground="Black"
+VerticalContentAlignment="Center" Height="29" />
+            <DatePicker
+x:Name="dpAdmindob"
+HorizontalAlignment="Left"
+VerticalAlignment="Top"
+Margin="526,269,0,0"
+Width="241"
+FontSize="20"
+BorderThickness="1"
+BorderBrush="Gray"
+Padding="5"
+Background="#F0F0F0"
+Foreground="Black"
+SelectedDateFormat="Short"
+Height="37" />
+
+            <TextBox
+            x:Name="txtAdminemail"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="526,319,0,0"
+            Width="241"
+               FontSize="15"
+Background="#F0F0F0"
+Foreground="Black"
+VerticalContentAlignment="Center" Height="29" />
+            <TextBox
+            x:Name="txtAdmingender"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="526,361,0,0"
+            Width="241"
+                FontSize="15"
+Background="#F0F0F0"
+Foreground="Black"
+VerticalContentAlignment="Center" Height="29"/>
+            <TextBox
+            x:Name="txtAdminphone"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="526,403,0,0"
+            Width="241"
+                FontSize="15"
+Background="#F0F0F0"
+Foreground="Black"
+VerticalContentAlignment="Center" Height="29" />
+            <Button Padding="0" x:Name="btnCancel_Copy" HorizontalAlignment="Left" Margin="748,458,0,0" VerticalAlignment="Top" Width="75" Click="btnCancel_click" Background="#FFF32121" BorderBrush="#FFF32121">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/img/icons/remove_btn.png" Margin="-2,0,0,0" Height="25" Width="25"/>
+                    <TextBlock Margin="2,0,0,0" Height="20"><Run Text="Cancel"/></TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Padding="0" x:Name="btnDoneOfAddUser_Copy" HorizontalAlignment="Left" Margin="828,458,0,0" VerticalAlignment="Top" Width="70" Click="btnDoneofAddUser_click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/img/icons/done_btn.png" Margin="-2,0,0,0" Height="25" Width="25"/>
+                    <TextBlock Margin="2,0,0,0" Height="20"><Run Text="Done"/></TextBlock>
+                </StackPanel>
+            </Button>
+        </Grid>
+    </Grid>
+</Window>

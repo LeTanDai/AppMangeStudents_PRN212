@@ -10,5 +10,9 @@ namespace Repositories
     public interface IAdminRepository
     {
         Admin GetAdminByID(string id);
+
+        void CreateAdmin(Admin Admin);
+        void UpdateAdmin(Admin Admin);
+        void DeleteAdmin(Admin Admin);
     }
 }
