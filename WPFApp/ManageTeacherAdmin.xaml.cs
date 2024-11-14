@@ -171,5 +171,34 @@ namespace WPFApp
                 LoadTeacherList();
             }
         }
+
+        private void btnCreate_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+      
+
+                Teacher teacher = new Teacher
+                {
+                    Idteacher = txtTeacherID.Text,
+                    Name = string.IsNullOrEmpty(txtTeacheName.Text) ? null : txtTeacheName.Text,
+                    Gender = cbxGender.SelectedItem is ComboBoxItem selectedGender ? selectedGender.Content.ToString() : null,
+                    Email = string.IsNullOrEmpty(txtEmail.Text) ? null : txtEmail.Text,
+                    Phone = string.IsNullOrEmpty(txtPhone.Text) ? null : txtPhone.Text,
+                    BirthDay = dpTeacherBirthday.SelectedDate.HasValue ? DateOnly.FromDateTime(dpTeacherBirthday.SelectedDate.Value) : null,
+                    IsActive = cbxIsActive.SelectedItem is ComboBoxItem selectedActive ? selectedActive.Content.ToString() : null
+                };
+
+                iTeacherService.CreateTeacher(teacher);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Updating Teacher", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            finally
+            {
+                LoadTeacherList();
+            }
+        }
     }
 }
