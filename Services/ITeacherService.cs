@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Repositories
+namespace Services
 {
-    public interface ITeacherRepository
+    public interface ITeacherService
     {
         IEnumerable<Teacher> GetTeachers();
         void CreateTeacher(Teacher teacher);

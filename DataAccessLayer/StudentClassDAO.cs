@@ -8,11 +8,12 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public class StudentDAO
+    public class StudentClassDAO
     {
-        private static StudentDAO instance = null;
+        StudentDAO studentDAO = new StudentDAO();
+        private static StudentClassDAO instance = null;
         private static readonly object instanceLock = new object();
-        public static StudentDAO Instance
+        public static StudentClassDAO Instance
         {
             get
             {
@@ -20,55 +21,63 @@ namespace DataAccessLayer
                 {
                     if (instance == null)
                     {
-                        instance = new StudentDAO();
+                        instance = new StudentClassDAO();
                     }
                     return instance;
                 }
             }
         }
 
-        public void CreateStudent(Student student)
+        public void CreateStudentClass(StudentClass studentClass)
         {
             using (var db = new Prn212ManageStudentsContext())
             {
                 try
                 {
-                    db.Students.Add(student);
-                    db.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception(ex.Message);
-                }
-            }
-        }
-
-        public void UpdateStudent(Student student)
-        {
-            using (var db = new Prn212ManageStudentsContext())
-            {
-                try
-                {
-                    db.Entry<Student>(student).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                    db.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception(ex.Message);
-                }
-            }
-        }
-
-        public void DeleteStudent(Student student)
-        {
-            using (var db = new Prn212ManageStudentsContext())
-            {
-                try
-                {
-                    var existingStudent = db.Students.FirstOrDefault(x => x.Idstudent == student.Idstudent);
-                    if (existingStudent != null)
+                    Student student = studentDAO.GetStudentByID(studentClass.Idstudent);
+                    if (student != null)
                     {
-                        db.Students.Remove(existingStudent);
+                        db.StudentClasses.Add(studentClass);
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        throw new Exception("Not have student with this StudentID!");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+        }
+
+        public void UpdateStudentClass(StudentClass studentClass)
+        {
+            using (var db = new Prn212ManageStudentsContext())
+            {
+                try
+                {
+                    db.Entry<StudentClass>(studentClass).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+        }
+
+        public void DeleteStudentClass(StudentClass studentClass)
+        {
+            using (var db = new Prn212ManageStudentsContext())
+            {
+                try
+                {
+                    var existingStudentClass = db.StudentClasses.FirstOrDefault(x => x.Idstudent == studentClass.Idstudent && x.NameClass == studentClass.NameClass);
+                    if (existingStudentClass != null)
+                    {
+                        db.StudentClasses.Remove(existingStudentClass);
                         db.SaveChanges();
                     }
                 }
@@ -79,33 +88,18 @@ namespace DataAccessLayer
             }
         }
 
-        public Student GetStudentByID(string id)
-        {
-            using (var db = new Prn212ManageStudentsContext())
-            {
-                return db.Students.FirstOrDefault(b => b.Idstudent.Equals(id));
-            }
-        }
-
-        public void Register(string id, string password)
+        public IEnumerable<Student> GetStudentsByClass(Class cl)
         {
             using (var db = new Prn212ManageStudentsContext())
             {
                 try
                 {
-                    Student student = new Student()
-                    {
-                        Idstudent = id,
-                        PassWord = password,
-                        Name = null,
-                        Gender = null,
-                        Email = null,
-                        Phone = null,
-                        BirthDay = null,
-                        IsActive = null
-                    };
-                    db.Students.Add(student);
-                    db.SaveChanges();
+                    return db.StudentClasses
+                             .Include(sc => sc.Class)
+                             .Include(sc => sc.IdstudentNavigation)
+                             .Where(sc => sc.Class.NameClass == cl.NameClass) // Filter by nameClass
+                             .Select(sc => sc.IdstudentNavigation) // Select the Student entity
+                             .ToList(); // Execute the query and return the list
                 }
                 catch (Exception ex)
                 {
@@ -113,6 +107,5 @@ namespace DataAccessLayer
                 }
             }
         }
-        }
     }
-
+}

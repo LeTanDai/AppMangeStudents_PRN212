@@ -1,5 +1,4 @@
 ﻿using BusinessObjects.Models;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public class StudentDAO
+    public class ClassDAO
     {
-        private static StudentDAO instance = null;
+        private static ClassDAO instance = null;
         private static readonly object instanceLock = new object();
-        public static StudentDAO Instance
+        public static ClassDAO Instance
         {
             get
             {
@@ -20,20 +19,35 @@ namespace DataAccessLayer
                 {
                     if (instance == null)
                     {
-                        instance = new StudentDAO();
+                        instance = new ClassDAO();
                     }
                     return instance;
                 }
             }
         }
 
-        public void CreateStudent(Student student)
+        public IEnumerable<Class> GetClasses()
         {
             using (var db = new Prn212ManageStudentsContext())
             {
                 try
                 {
-                    db.Students.Add(student);
+                    return db.Classes.ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+        }
+
+        public void CreateClass(Class cl)
+        {
+            using (var db = new Prn212ManageStudentsContext())
+            {
+                try
+                {
+                    db.Classes.Add(cl);
                     db.SaveChanges();
                 }
                 catch (Exception ex)
@@ -43,13 +57,13 @@ namespace DataAccessLayer
             }
         }
 
-        public void UpdateStudent(Student student)
+        public void UpdateClass(Class cl)
         {
             using (var db = new Prn212ManageStudentsContext())
             {
                 try
                 {
-                    db.Entry<Student>(student).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    db.Entry<Class>(cl).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                     db.SaveChanges();
                 }
                 catch (Exception ex)
@@ -59,16 +73,16 @@ namespace DataAccessLayer
             }
         }
 
-        public void DeleteStudent(Student student)
+        public void DeleteClass(Class cl)
         {
             using (var db = new Prn212ManageStudentsContext())
             {
                 try
                 {
-                    var existingStudent = db.Students.FirstOrDefault(x => x.Idstudent == student.Idstudent);
-                    if (existingStudent != null)
+                    var existingClass = db.Classes.FirstOrDefault(x => x.NameClass == cl.NameClass && x.SchoolYear == cl.SchoolYear);
+                    if (existingClass != null)
                     {
-                        db.Students.Remove(existingStudent);
+                        db.Classes.Remove(existingClass);
                         db.SaveChanges();
                     }
                 }
@@ -79,40 +93,13 @@ namespace DataAccessLayer
             }
         }
 
-        public Student GetStudentByID(string id)
+        public Class GetClass(string clName, string schoolY)
         {
             using (var db = new Prn212ManageStudentsContext())
             {
-                return db.Students.FirstOrDefault(b => b.Idstudent.Equals(id));
+                return db.Classes.FirstOrDefault(b => b.NameClass == clName && b.SchoolYear == schoolY);
             }
-        }
-
-        public void Register(string id, string password)
-        {
-            using (var db = new Prn212ManageStudentsContext())
-            {
-                try
-                {
-                    Student student = new Student()
-                    {
-                        Idstudent = id,
-                        PassWord = password,
-                        Name = null,
-                        Gender = null,
-                        Email = null,
-                        Phone = null,
-                        BirthDay = null,
-                        IsActive = null
-                    };
-                    db.Students.Add(student);
-                    db.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception(ex.Message);
-                }
-            }
-        }
         }
     }
 
+}

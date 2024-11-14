@@ -1,0 +1,110 @@
+﻿<Window x:Class="WPFApp.ManageTeacherAdmin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFApp"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded"
+        Title="ManageTeacherAdminWindow" Height="650" Width="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <StackPanel Grid.Column="0" Background="DarkSlateGray" Width="200" VerticalAlignment="Stretch">
+            <StackPanel Margin="10">
+                <!-- User Info -->
+                <Image Source="Images/logo_1.png" Width="100" Height="100" HorizontalAlignment="Center"/>
+                <TextBlock Text="Nguyễn Văn Hoàng Phúc" Foreground="White" FontWeight="Bold" FontSize="14" TextAlignment="Center"/>
+                <TextBlock Text="Admin" Foreground="White" FontSize="12" TextAlignment="Center"/>
+            </StackPanel>
+
+            <!-- Menu Items -->
+            <StackPanel Margin="10" VerticalAlignment="Top">
+                <Button Content="My Information" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
+                <Button Content="Search Student" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
+                <Button Content="Update Score" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
+                <Button Content="Add Student" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
+                <Button Content="Manage Classes" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
+                <Button Content="Manage Students" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
+                <Button Content="Manage Teachers" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
+                <Button Content="Report" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
+                <Button Content="Regulations" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
+            </StackPanel>
+
+            <!-- Logout Button -->
+            <Button Content="Log out" HorizontalAlignment="Center" Margin="0,20,0,0" Background="Transparent" Foreground="Red" BorderBrush="Red"/>
+        </StackPanel>
+
+        <Grid Grid.Column="1" >
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="label1" Margin="2,2,2,2" Content="Teacher ID" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="txtTeacherID" Background="LightGray" Margin="4,2,4,2" Grid.Column="2" Grid.Row="0" Text="" TextWrapping="Wrap" Grid.ColumnSpan="2" IsEnabled="False"/>
+
+            <Label x:Name="label2" Margin="2,2,2,2" Grid.Column="0" Grid.Row="1" Content="Teache Name" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="txtTeacheName" Background="LightGray" Margin="4,2,4,2" Grid.Column="2" Grid.Row="1" Text="" TextWrapping="Wrap" Grid.ColumnSpan="2"/>
+
+            <Label x:Name="label3" Margin="2,2,2,2" Grid.Column="0" Grid.Row="2" Content="Gender" Grid.ColumnSpan="2"/>
+            <ComboBox x:Name="cbxGender" Background="LightGray" Margin="4,2,4,2" Grid.Column="2" Grid.Row="2" Text="" Grid.ColumnSpan="2">
+                <ComboBoxItem Content="Male" />
+                <ComboBoxItem Content="Female"/>
+            </ComboBox>
+
+            <Label x:Name="label4" Margin="2,2,2,2" Grid.Column="0" Grid.Row="3" Content="Email" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="txtEmail" Background="LightGray" Margin="4,2,4,2" Grid.Column="2" Grid.Row="3" Text="" TextWrapping="Wrap" Grid.ColumnSpan="2"/>
+
+            <Label x:Name="label5" Margin="2,2,2,2" Grid.Column="0" Grid.Row="4" Content="Phone" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="txtPhone" Background="LightGray" Margin="4,2,4,2" Grid.Column="2" Grid.Row="4" Text="" TextWrapping="Wrap" Grid.ColumnSpan="2"/>
+
+            <Label x:Name="label6" Margin="2,2,2,2" Grid.Column="0" Grid.Row="5" Content="DOB" Grid.ColumnSpan="2"/>
+            <DatePicker x:Name="dpTeacherBirthday" Margin="4,4,4,4" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2"/>
+
+            <Label x:Name="label7" Margin="2,2,2,2" Grid.Column="0" Grid.Row="6" Content="Is Active" Grid.ColumnSpan="2"/>
+            <ComboBox x:Name="cbxIsActive" Background="LightGray" Margin="4,2,4,2" Grid.Column="2" Grid.Row="6" Text="" Grid.ColumnSpan="2">
+                <ComboBoxItem Content="Y" />
+                <ComboBoxItem Content="N"/>
+            </ComboBox>
+                    
+            <DataGrid x:Name="dgData" Margin="4,20,4,4" Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="3" SelectionChanged="dgData_SelectionChanged"
+                AutoGenerateColumns="False" CanUserAddRows="False" RowHeight="28">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Idteacher}" Width="50" />
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="200" />
+                    <DataGridTextColumn Header="Gender" Binding="{Binding Gender}" Width="50" />
+                    <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*" />
+                    <DataGridTextColumn Header="Phone" Binding="{Binding Phone}" Width="*" />
+                    <DataGridTextColumn Header="DOB" Binding="{Binding BirthDay}" Width="100" />
+                    <DataGridTextColumn Header="Is Active" Binding="{Binding IsActive}" Width="60" />
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <StackPanel Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,10">
+                
+                <Button x:Name="btnUpdate" Content="Update" Width="150" Height="50" Background="#FF1B7140" Foreground="White" Margin="10,0,10,0" Click="btnUpdate_Click"/>
+                <Button x:Name="btnDelete" Content="Delete" Width="150" Height="50" Background="#FFA2AA3D" Foreground="White" Margin="10,0,10,0" Click="btnDelete_Click"/>
+                <Button x:Name="btnClose" Content="Close" Width="150" Height="50" Background="#FFEF8F18" Foreground="White" Margin="10,0,10,0" Click="btnClose_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
