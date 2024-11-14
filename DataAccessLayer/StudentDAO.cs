@@ -12,6 +12,7 @@ namespace DataAccessLayer
     {
         private static StudentDAO instance = null;
         private static readonly object instanceLock = new object();
+        public Prn212ManageStudentsContext _context;
         public static StudentDAO Instance
         {
             get
@@ -25,6 +26,11 @@ namespace DataAccessLayer
                     return instance;
                 }
             }
+        }
+        public IEnumerable<Student> GetallStudent()
+        {
+            _context = new();
+            return _context.Students.ToList();
         }
 
         public void CreateStudent(Student student)
