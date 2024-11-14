@@ -25,7 +25,7 @@
 
             <!-- Menu Items -->
             <StackPanel Margin="10" VerticalAlignment="Top">
-                <Button Content="My Information" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
+                <Button Content="My Information" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5" Click="Button_Click"/>
                 <Button Content="Search Student" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
                 <Button Content="Update Score" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
                 <Button Content="Add Student" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>

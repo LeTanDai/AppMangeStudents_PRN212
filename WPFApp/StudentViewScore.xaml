@@ -22,7 +22,7 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Background="DarkSlateGray">
             <StackPanel Margin="10">
-                <Image Source="C:\Users\trong\source\repos\Test2\WpfApp1\img\logo_1.png" Width="100" Height="100" HorizontalAlignment="Center"/>
+                <Image Source="\Images\logo_1.png" Width="100" Height="100" HorizontalAlignment="Center"/>
                 <TextBlock Text="Nguyễn Văn Hoàng Phúc" Foreground="White" FontWeight="Bold" FontSize="14" TextAlignment="Center"/>
                 <TextBlock Text="Teacher FPTU" Foreground="White" FontSize="12" TextAlignment="Center"/>
             </StackPanel>
@@ -42,7 +42,7 @@
             <Grid>
                 <Ellipse Width="166" Height="166" Margin="0,10,0,-10">
                     <Ellipse.Fill>
-                        <ImageBrush ImageSource="C:\Users\trong\source\repos\Test2\WpfApp1\img\icons\admin_avatar.png" Stretch="UniformToFill"/>
+                        <ImageBrush ImageSource="\Images\icons\admin_avatar.png" Stretch="UniformToFill"/>
                     </Ellipse.Fill>
                 </Ellipse>
             </Grid>

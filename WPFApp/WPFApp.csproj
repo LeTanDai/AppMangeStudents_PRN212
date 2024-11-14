@@ -12,9 +12,20 @@
     <None Remove="Images\back-image.jpg" />
     <None Remove="Images\back-image1.jpg" />
     <None Remove="Images\bk.jpg" />
+    <None Remove="Images\icons\admin_avatar.png" />
+    <None Remove="Images\icons\done_btn.png" />
+    <None Remove="Images\icons\edit_btn.png" />
     <None Remove="Images\icons\loading-arrow.png" />
     <None Remove="Images\icons\manageuser_avatar.png" />
+    <None Remove="Images\icons\remove_btn.png" />
+    <None Remove="Images\icons\student_avatar.png" />
+    <None Remove="Images\icons\teacher_avatar.png" />
     <None Remove="Images\logo_1.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\icons\admin_avatar.png" />
+    <Resource Include="Images\icons\done_btn.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,12 +54,16 @@
     <Resource Include="Images\back-image.jpg" />
     <Resource Include="Images\back-image1.jpg" />
     <Resource Include="Images\bk.jpg" />
+    <Resource Include="Images\icons\edit_btn.png" />
     <Resource Include="Images\icons\loading-arrow.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\icons\manageuser_avatar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\icons\remove_btn.png" />
+    <Resource Include="Images\icons\student_avatar.png" />
+    <Resource Include="Images\icons\teacher_avatar.png" />
     <Resource Include="Images\logo_1.png" />
   </ItemGroup>
 

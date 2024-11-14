@@ -10,6 +10,10 @@ namespace Repositories
 {
     public class AdminRepository : IAdminRepository
     {
+        public void CreateAdmin(Admin Admin) => AdminDAO.Instance.CreateAdmin(Admin);
+        public void DeleteAdmin(Admin Admin) => AdminDAO.Instance.DeleteAdmin(Admin);
+        public void UpdateAdmin(Admin Admin) => AdminDAO.Instance.UpdateAdmin(Admin);
+        public List<Admin> GetAllAdmins() => AdminDAO.Instance.GetAll();
         public Admin GetAdminByID(string id) => AdminDAO.Instance.GetAdminByID(id);
     }
 }

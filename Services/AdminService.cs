@@ -16,9 +16,30 @@ namespace Services
         {
             iAdminRepository = new AdminRepository();
         }
+
+        public void CreateAdmin(Admin Admin)
+        {
+            iAdminRepository.CreateAdmin(Admin);
+        }
+
+        public void DeleteAdmin(Admin Admin)
+        {
+            iAdminRepository.DeleteAdmin(Admin);
+        }
+
         public Admin GetAdminByID(string id)
         {
             return iAdminRepository.GetAdminByID(id);
+        }
+
+        public List<Admin> GetAllAdmins()
+        {
+            return iAdminRepository.GetAllAdmins();
+        }
+
+        public void UpdateAdmin(Admin Admin)
+        {
+            iAdminRepository.UpdateAdmin(Admin);
         }
     }
 }
