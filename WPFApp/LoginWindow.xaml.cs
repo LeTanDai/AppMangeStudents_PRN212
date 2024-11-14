@@ -1,5 +1,6 @@
 ﻿using BusinessObjects.Models;
 using Repositories;
+using Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,24 +23,17 @@ namespace WPFApp
     /// </summary>
     public partial class LoginWindow : Window
     {
-        private readonly IAdminRepository adminRepository;
-        private readonly IStudentRepository studentRepository;
-        private readonly ITeacherRepository teacherRepository;
+        private readonly IAdminService iAdminService;
+        private readonly IStudentService iStudentService;
+        private readonly ITeacherService iTeacherService;
         public LoginWindow()
         {
             InitializeComponent();
-            adminRepository = new AdminRepository();
-            studentRepository = new StudentRepository();
-            teacherRepository = new TeacherRepository();
+            iAdminService = new AdminService();
+            iStudentService = new StudentService();
+            iTeacherService = new TeacherService();
             cbxTypeAccount.SelectedIndex = 0;
             cbxTypeAccountSignUp.SelectedIndex = 0;
-
-            if (Properties.Settings.Default.RememberMe)
-            {
-                txtAccountID.Text = Properties.Settings.Default.ID;
-                txtPassword.Password = Properties.Settings.Default.Password; // Cẩn thận với việc hiển thị mật khẩu
-                chkRememberMe.IsChecked = true;
-            }
         }
 
         private void ShowSignUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -63,36 +57,48 @@ namespace WPFApp
             string type = cbxTypeAccount.Text;
 
             if (type.Equals("Admin")){
-                Admin? admin = adminRepository.GetAdminByID(id);
+                Admin? admin = iAdminService.GetAdminByID(id);
                 if(admin!=null && admin.PassWord == password)
                 {
-                    SaveLoginInfo(id, password);
+                    
                     this.Hide();
-                    MainWindow mainWindow = new MainWindow();
-                    mainWindow.Show();
+                    ManageClassAdmin manageTeacherAdmin = new ManageClassAdmin();
+                    manageTeacherAdmin.Show();
                     return;
+                }
+                else
+                {
+                    MessageBox.Show("Wrong admin account!");
                 }
             } else if (type.Equals("Student"))
             {
-                Student? student = studentRepository.GetStudentByID(id);
+                Student? student = iStudentService.GetStudentByID(id);
                 if (student != null && student.PassWord == password)
                 {
-                    SaveLoginInfo(id, password);
+                    
                     this.Hide();
                     MainWindow mainWindow = new MainWindow();
                     mainWindow.Show();
                     return;
                 }
+                else
+                {
+                    MessageBox.Show("Wrong student account!");
+                }
             } else if (type.Equals("Teacher"))
             {
-                Teacher? teacher = teacherRepository.GetTeacherByID(id);
+                Teacher? teacher = iTeacherService.GetTeacherByID(id);
                 if (teacher != null && teacher.PassWord == password)
                 {
-                    SaveLoginInfo(id, password);
+                    
                     this.Hide();
                     MainWindow mainWindow = new MainWindow();
                     mainWindow.Show();
                     return;
+                }
+                else
+                {
+                    MessageBox.Show("Wrong teacher account!");
                 }
             }
         }
@@ -106,55 +112,41 @@ namespace WPFApp
 
             if (type.Equals("Student"))
             {
-                Student? existingStudent = studentRepository.GetStudentByID(id);
+                Student? existingStudent = iStudentService.GetStudentByID(id);
                 if (existingStudent != null)
                 {
                     MessageBox.Show("ID already exist. Please use different ID!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
+                }else if(txtPasswordSignUp.Password == txtPasswordSignUpCheck.Password)
+                {
+                    iStudentService.Register(txtAccountSignUp.Text, txtPasswordSignUp.Password);
+                    MessageBox.Show("Sign Up Successfully!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
+                    this.Hide();
+                    LoginWindow loginWindow = new LoginWindow();
+                    loginWindow.Show();
+                    return;
                 }
-
-                Student newStudent = new Student { Idstudent = id, PassWord = password };
-                studentRepository.CreateStudent(newStudent); 
-                MessageBox.Show("Sign Up Successfully!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
-                this.Hide();
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
-                return;
             }
             else if (type.Equals("Teacher"))
             {
-                Teacher? existingTeacher = teacherRepository.GetTeacherByID(id);
+                Teacher? existingTeacher = iTeacherService.GetTeacherByID(id);
                 if (existingTeacher != null)
                 {
-                    MessageBox.Show("Tài khoản đã tồn tại. Vui lòng chọn ID khác.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("ID already exist. Please use different ID!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
-
-                Teacher newTeacher = new Teacher { Idteacher = id, PassWord = password };
-                teacherRepository.CreateTeacher(newTeacher); 
-                MessageBox.Show("Sign Up Successfully!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
-                this.Hide();
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
-                return;
+                else if (txtPasswordSignUp.Password == txtPasswordSignUpCheck.Password)
+                {
+                    iTeacherService.Register(txtAccountSignUp.Text, txtPasswordSignUp.Password);
+                    MessageBox.Show("Sign Up Successfully!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
+                    this.Hide();
+                    LoginWindow loginWindow = new LoginWindow();
+                    loginWindow.Show();
+                    return;
+                }
             }
         }
 
-        private void SaveLoginInfo(string id, string password)
-        {
-            if (chkRememberMe.IsChecked == true)
-            {
-                Properties.Settings.Default.ID = id;
-                Properties.Settings.Default.Password = password; 
-                Properties.Settings.Default.RememberMe = true;
-            }
-            else
-            {
-                Properties.Settings.Default.ID = string.Empty;
-                Properties.Settings.Default.Password = string.Empty;
-                Properties.Settings.Default.RememberMe = false;
-            }
-            Properties.Settings.Default.Save(); 
-        }
+        
     }
 }

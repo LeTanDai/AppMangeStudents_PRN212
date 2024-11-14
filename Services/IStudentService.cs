@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Repositories
+namespace Services
 {
-    public interface IStudentRepository
+    public interface IStudentService
     {
         void CreateStudent(Student student);
         void DeleteStudent(Student student);

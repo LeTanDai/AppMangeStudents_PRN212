@@ -25,6 +25,20 @@ namespace DataAccessLayer
                 }
             }
         }
+        public IEnumerable<Teacher> GetTeachers()
+        {
+            using (var db = new Prn212ManageStudentsContext())
+            {
+                try
+                {
+                    return db.Teachers.ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+        }
 
         public void CreateTeacher(Teacher teacher)
         {
@@ -76,6 +90,33 @@ namespace DataAccessLayer
                     throw new Exception(ex.Message);
                 }
             }
+        }
+
+        public void Register(string id, string password)
+        {
+            using (var db = new Prn212ManageStudentsContext())
+            {
+                try
+                {
+                    Teacher teacher = new Teacher()
+                    {
+                        Idteacher = id,
+                        PassWord = password,
+                        Name = null,
+                        Gender = null,
+                        Email = null,
+                        Phone = null,
+                        BirthDay = null,
+                        IsActive = null
+                    };
+                    db.Teachers.Add(teacher);
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }           
         }
 
         public Teacher GetTeacherByID(string id)
