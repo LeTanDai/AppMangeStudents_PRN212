@@ -17,7 +17,7 @@
         <StackPanel Grid.Column="0" Background="DarkSlateGray" Width="200" VerticalAlignment="Stretch">
             <StackPanel Margin="10">
                 <!-- User Info -->
-                <Image Source="Images/logo_1.png" Width="100" Height="100" HorizontalAlignment="Center"/>
+                <Image Source="/img/logo_1.png" Width="100" Height="100" HorizontalAlignment="Center"/>
                 <TextBlock Text="Nguyễn Văn Hoàng Phúc" Foreground="White" FontWeight="Bold" FontSize="14" TextAlignment="Center"/>
                 <TextBlock Text="Teacher FPTU" Foreground="White" FontSize="12" TextAlignment="Center"/>
             </StackPanel>
