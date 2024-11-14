@@ -1,4 +1,5 @@
 ﻿using BusinessObjects.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace DataAccessLayer
     {
         private static StudentDAO instance = null;
         private static readonly object instanceLock = new object();
+        public Prn212ManageStudentsContext _context;
+
         public static StudentDAO Instance
         {
             get
@@ -85,5 +88,11 @@ namespace DataAccessLayer
                 return db.Students.FirstOrDefault(b => b.Idstudent.Equals(id));
             }
         }
+        public IEnumerable<Student> GetallStudent()
+        {
+            _context = new();
+            return _context.Students.ToList();
+        }
+
     }
 }

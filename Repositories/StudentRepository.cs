@@ -14,5 +14,6 @@ namespace Repositories
         public void DeleteStudent(Student student) => StudentDAO.Instance.DeleteStudent(student);
         public void UpdateStudent(Student student) => StudentDAO.Instance.UpdateStudent(student);
         public Student GetStudentByID(string id) => StudentDAO.Instance.GetStudentByID(id);
+        public IEnumerable<Student> GetallStudent() => StudentDAO.Instance.GetallStudent();
     }
 }

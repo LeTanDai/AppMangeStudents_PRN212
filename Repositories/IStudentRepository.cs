@@ -13,5 +13,6 @@ namespace Repositories
         void DeleteStudent(Student student);
         void UpdateStudent(Student student);
         Student GetStudentByID(string id);
+        IEnumerable<Student> GetallStudent();
     }
 }
