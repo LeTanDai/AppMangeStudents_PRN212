@@ -23,14 +23,18 @@ namespace WPFApp
     {
         private readonly IClassService iClassService;
         private Class? selectedClass;
-        public ManageClassAdmin()
+        private Admin admin = new Admin();
+        public ManageClassAdmin(Admin admin)
         {
             InitializeComponent();
             iClassService = new ClassService();
-            if(iClassService == null)
+            this.admin = admin;
+            if (iClassService == null)
             {
                 MessageBox.Show("Service is null");
             }
+
+            this.admin = admin;
         }
 
         private void LoadClassList()
@@ -128,6 +132,13 @@ namespace WPFApp
             Class cl = selectedClass;
             WindowListStudentByClass window = new WindowListStudentByClass(cl);
             window.ShowDialog();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AdminInformation adminInformation = new AdminInformation(admin);
+            this.Hide();
+            adminInformation.Show();
         }
     }
 }

@@ -16,5 +16,6 @@ namespace Repositories
         public void UpdateStudent(Student student) => StudentDAO.Instance.UpdateStudent(student);
         public Student GetStudentByID(string id) => StudentDAO.Instance.GetStudentByID(id);
         public void Register(string id, string password) => StudentDAO.Instance.Register(id, password);
+        
     }
 }

@@ -1,0 +1,69 @@
+﻿<Window x:Class="WPFApp.StudentViewScore"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFApp"
+                    mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded"
+            Title="Student view Score" Height="666" Width="1000">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition/>
+            <RowDefinition Height="17.04"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Background="DarkSlateGray">
+            <StackPanel Margin="10">
+                <Image Source="\Images\logo_1.png" Width="100" Height="100" HorizontalAlignment="Center"/>
+                <TextBlock Text="Nguyễn Văn Hoàng Phúc" Foreground="White" FontWeight="Bold" FontSize="14" TextAlignment="Center"/>
+                <TextBlock Text="Teacher FPTU" Foreground="White" FontSize="12" TextAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Margin="10" VerticalAlignment="Top">
+                <Button Content="My Information" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
+                <Button Content="Search Student" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
+                <Button Content="Update Score" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
+                <Button Content="Add Student" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
+                <Button Content="Manage Classes" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
+                <Button Content="Manage Students" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
+                <Button Content="Manage Teachers" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
+                <Button Content="Report" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
+                <Button Content="Regulations" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Left" VerticalAlignment="Center" Height="274" Width="210" Margin="10,0,0,0">
+            <Grid>
+                <Ellipse Width="166" Height="166" Margin="0,10,0,-10">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="\Images\icons\admin_avatar.png" Stretch="UniformToFill"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+            </Grid>
+            <Label Content="I'm" FontSize="36" FontWeight="Bold" Width="72" Height="54" />
+            <TextBox CharacterCasing="Upper" BorderThickness="0" IsReadOnly="True" x:Name="studentname" FontSize="36" FontWeight="Bold" Height="54"/>
+        </StackPanel>
+        <DataGrid x:Name="dgData" Margin="246,105,10,105" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" SelectionChanged="dgData_SelectionChanged"
+AutoGenerateColumns="False">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Sem" Binding="{Binding Semester}" Width="70"/>
+                <DataGridTextColumn Header="Subject" Binding="{Binding Idsubject}" Width="70"/>
+                <DataGridTextColumn Header="PT1" Binding="{Binding ProgressTest1}" Width="50"/>
+                <DataGridTextColumn Header="PT2" Binding="{Binding ProgressTest2}" Width="50"/>
+                <DataGridTextColumn Header="Lab1" Binding="{Binding Lab1}" Width="50"/>
+                <DataGridTextColumn Header="Lab2" Binding="{Binding Lab2}" Width="50"/>
+                <DataGridTextColumn Header="Final Exam" Binding="{Binding FinalExam}" Width="70"/>
+                <DataGridTextColumn Header="Practical Exam" Binding="{Binding PracticalExam}" Width="90"/>
+                <DataGridTextColumn Header="Total" Binding="{Binding Total}" Width="50"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>

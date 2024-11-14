@@ -62,8 +62,8 @@ namespace WPFApp
                 {
                     
                     this.Hide();
-                    ManageClassAdmin manageTeacherAdmin = new ManageClassAdmin();
-                    manageTeacherAdmin.Show();
+                    AdminInformation mainwindow = new AdminInformation(admin);
+                    mainwindow.Show();
                     return;
                 }
                 else
@@ -77,8 +77,8 @@ namespace WPFApp
                 {
                     
                     this.Hide();
-                    MainWindow mainWindow = new MainWindow();
-                    mainWindow.Show();
+                    StudentInformation mainwindow = new StudentInformation(student);
+                    mainwindow.Show();
                     return;
                 }
                 else
@@ -92,8 +92,8 @@ namespace WPFApp
                 {
                     
                     this.Hide();
-                    MainWindow mainWindow = new MainWindow();
-                    mainWindow.Show();
+                    TeacherInformation mainwindow = new TeacherInformation(teacher);
+                    mainwindow.Show();
                     return;
                 }
                 else

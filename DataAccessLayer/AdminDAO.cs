@@ -33,5 +33,65 @@ namespace DataAccessLayer
                 return db.Admins.FirstOrDefault(b => b.Id.Equals(id));
             }
         }
+        public void CreateAdmin(Admin Admin)
+        {
+            using (var db = new Prn212ManageStudentsContext())
+            {
+                try
+                {
+                    db.Admins.Add(Admin);
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+        }
+
+        public void UpdateAdmin(Admin Admin)
+        {
+            using (var db = new Prn212ManageStudentsContext())
+            {
+                try
+                {
+                    db.Entry<Admin>(Admin).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+        }
+        public List<Admin> GetAll()
+        {
+            List<Admin> list = new List<Admin>();
+            using (var db = new Prn212ManageStudentsContext())
+            {
+                list = db.Admins.ToList();
+            }
+            return list;
+        }
+
+        public void DeleteAdmin(Admin Admin)
+        {
+            using (var db = new Prn212ManageStudentsContext())
+            {
+                try
+                {
+                    var existingAdmin = db.Admins.FirstOrDefault(x => x.Id == Admin.Id);
+                    if (existingAdmin != null)
+                    {
+                        db.Admins.Remove(existingAdmin);
+                        db.SaveChanges();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+        }
     }
 }

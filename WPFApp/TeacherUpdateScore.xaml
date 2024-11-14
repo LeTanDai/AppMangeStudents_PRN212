@@ -1,0 +1,122 @@
+﻿<Window x:Class="WPFApp.TeacherUpdateScore"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFApp"
+              mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="802" Width="900">
+    <Grid>
+        <Grid>
+            <Grid>
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+
+                    </LinearGradientBrush>
+                </Grid.Background>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="85"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="199"/>
+                    <ColumnDefinition Width="113.888"/>
+                    <ColumnDefinition Width="337.112"/>
+                </Grid.ColumnDefinitions>
+
+
+                <StackPanel Grid.Column="0" Grid.ColumnSpan="5" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="95,0,0,0">
+
+                    <!-- ComboBox for Customer Information Management -->
+                    <ComboBox x:Name="cmbsemester" Width="200" Height="50" Margin="10,0,10,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  SelectionChanged="cmbsemester_SelectionChanged">
+                        <ComboBoxItem Content="Semester"/>
+                        <ComboBoxItem Content="Spring"/>
+                        <ComboBoxItem Content="Fall"/>
+                        <ComboBoxItem Content="Summer"/>
+                    </ComboBox>
+
+                    <!-- ComboBox for Room Information Management -->
+                    <ComboBox x:Name="cmbclass" Width="200" Height="50" Margin="10,0,10,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  SelectionChanged="cmbClass_SelectionChanged"/>
+
+                    <!-- ComboBox for Report Creation -->
+                    <ComboBox x:Name="cmbSubject" Width="200" Height="50" Margin="10,0,10,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   SelectionChanged="cmbSubject_SelectionChanged">
+
+                    </ComboBox>
+
+                </StackPanel>
+
+                <Label x:Name="label1" Margin="0,0,4,39" Content="Student ID" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+                <TextBox x:Name="txttudentID" Margin="4,4,0,4" Grid.Column="2" Grid.Row="1" Text="" TextWrapping="Wrap" IsEnabled="False" TextChanged="txttudentID_TextChanged"/>
+
+                <Label x:Name="label1_Name" Margin="5,0,250,39" Content="Student name" Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="2" Grid.Row="1"/>
+                <TextBox x:Name="txtStudentName" Margin="10,4,4,4" Grid.Column="4" Grid.Row="1" Text="" TextWrapping="Wrap" IsEnabled="False" TextChanged="txttudentName_TextChanged"/>
+
+                <Label x:Name="label2" Margin="0,0,4,4" Grid.Column="0" Grid.Row="2" Content="Student Class" Grid.ColumnSpan="2"/>
+                <TextBox x:Name="txtStudentclassName" Margin="4,4,4,4" Grid.Column="2" Grid.Row="2" Text="" TextWrapping="Wrap" Grid.ColumnSpan="3" IsEnabled="False" TextChanged="txtStudentclassName_TextChanged"/>
+
+                <Label x:Name="label3" Margin="0,0,4,4" Content="PT1" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"/>
+                <TextBox x:Name="txtStudentPT1Score" Margin="4,4,4,4" Grid.Column="2" Grid.Row="3" Text="" TextWrapping="Wrap" Grid.ColumnSpan="3" TextChanged="txtStudentPT1Score_TextChanged"/>
+
+                <Label x:Name="label4" Margin="0,0,4,4" Content="PT2" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2"/>
+                <TextBox x:Name="txtStudentPT2Score" Margin="4,4,4,4" Grid.Column="2" Grid.Row="4" Text="" TextWrapping="Wrap" Grid.ColumnSpan="3" TextChanged="txtStudentPT2Score_TextChanged"/>
+
+                <Label x:Name="label5" Margin="0,0,4,4" Content="Lab1" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2"/>
+                <TextBox x:Name="txtStudentLab1Score" Margin="4,4,4,4" Grid.Column="2" Grid.Row="5" Text="" TextWrapping="Wrap" Grid.ColumnSpan="3" TextChanged="txtStudentLab1Score_TextChanged"/>
+
+                <Label x:Name="label6" Margin="0,0,4,4" Content="Lab2" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2"/>
+                <TextBox x:Name="txtStudentLab2Score" Margin="4,4,4,4" Grid.Column="2" Grid.Row="6" Text="" TextWrapping="Wrap" Grid.ColumnSpan="3" TextChanged="txtStudentLab2Score_TextChanged"/>
+
+                <Label x:Name="label7" Margin="0,0,4,4" Content="FE" Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="2"/>
+                <TextBox x:Name="txtStudentFEScore" Margin="4,4,4,4" Grid.Column="2" Grid.Row="7" Text="" TextWrapping="Wrap" Grid.ColumnSpan="3" TextChanged="txtStudentFEScore_TextChanged"/>
+
+                <Label x:Name="label8" Margin="0,0,4,4" Content="FE" Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="2"/>
+                <TextBox x:Name="txtStudentPEScore" Margin="4,4,4,4" Grid.Column="2" Grid.Row="8" Text="" TextWrapping="Wrap" Grid.ColumnSpan="3" TextChanged="txtStudentPEScore_TextChanged"/>
+
+                <Label x:Name="label9" Margin="0,0,4,4" Content="total" Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="2"/>
+                <TextBox x:Name="txtStudentTotalScore" Margin="4,4,4,4" Grid.Column="2" Grid.Row="9" Text="" TextWrapping="Wrap" Grid.ColumnSpan="3" TextChanged="txtStudentTotalScore_TextChanged"/>
+
+                <DataGrid x:Name="dgData" Margin="4,17,-19,10" Grid.Column="0" Grid.Row="10" Grid.ColumnSpan="5" SelectionChanged="dgData_SelectionChanged"
+        AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Student ID" Binding="{Binding Mark.Idstudent}" Width="100"/>
+                        <DataGridTextColumn Header="Student Name" Binding="{Binding Student.Name}" Width="155"/>
+                        <DataGridTextColumn Header="Class Name" Binding="{Binding Mark.NameClass}" Width="100"/>
+                        <DataGridTextColumn Header="Sem" Binding="{Binding Mark.Semester}" Width="100"/>
+                        <DataGridTextColumn Header="Subject ID" Binding="{Binding Mark.Idsubject}" Width="100"/>
+                        <DataGridTextColumn Header="PT1" Binding="{Binding Mark.ProgressTest1}" Width="50"/>
+                        <DataGridTextColumn Header="PT2" Binding="{Binding Mark.ProgressTest2}" Width="50"/>
+                        <DataGridTextColumn Header="Lab1" Binding="{Binding Mark.Lab1}" Width="50"/>
+                        <DataGridTextColumn Header="Lab2" Binding="{Binding Mark.Lab2}" Width="50"/>
+                        <DataGridTextColumn Header="Final Exam" Binding="{Binding Mark.FinalExam}" Width="70"/>
+                        <DataGridTextColumn Header="Practical Exam" Binding="{Binding Mark.PracticalExam}" Width="90"/>
+                        <DataGridTextColumn Header="Total" Binding="{Binding Mark.Total}" Width="50"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+
+
+                <Button x:Name="btnUpdate" Content="Update" Background="#FF1B7140" Foreground="White" Margin="37,286,150,10" Click="btnUpdate_Click" Grid.Column="4" Grid.Row="10" Grid.RowSpan="2"/>
+                <Button x:Name="btnClose" Content="Close" Background="#FFEF8F18" Foreground="White" Click="btnClose_Click" Grid.Column="4" Margin="183,286,4,10" Grid.RowSpan="2" Grid.Row="10"/>
+                <Button x:Name="btnbạck" Content="Back" Background="red" Foreground="White" Margin="335,10,-40,58" Click="btnBack_Click" Grid.Column="4"/>
+
+
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
