@@ -40,12 +40,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\back-image.jpg" />
+    <Resource Include="Images\back-image1.jpg" />
+    <Resource Include="Images\bk.jpg" />
     <Resource Include="Images\icons\loading-arrow.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\icons\manageuser_avatar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\logo_1.png" />
   </ItemGroup>
 
   <ItemGroup>
