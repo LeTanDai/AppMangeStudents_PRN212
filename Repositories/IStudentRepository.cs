@@ -16,5 +16,6 @@ namespace Repositories
         void UpdateStudent(Student student);
         Student GetStudentByID(string id);
         void Register(string id, string password);
+        
     }
 }
