@@ -62,7 +62,7 @@ namespace WPFApp
                 {
                     
                     this.Hide();
-                    AdminInformation mainwindow = new AdminInformation(admin);
+                    ManageAssignAdmin mainwindow = new ManageAssignAdmin(admin);
                     mainwindow.Show();
                     return;
                 }

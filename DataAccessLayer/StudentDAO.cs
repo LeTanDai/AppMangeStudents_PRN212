@@ -43,6 +43,17 @@ namespace DataAccessLayer
             {
                 try
                 {
+                    var lastStudent = db.Students.OrderByDescending(s => s.Idstudent).FirstOrDefault();
+                    if (lastStudent != null)
+                    {
+                        string lastId = lastStudent.Idstudent;
+                        int lastNumber = int.Parse(lastId.Substring(2));
+                        student.Idstudent = "ST" + (lastNumber + 1).ToString("D3");
+                    }
+                    else
+                    {
+                        student.Idstudent = "ST001";
+                    }
                     db.Students.Add(student);
                     db.SaveChanges();
                 }
@@ -75,16 +86,20 @@ namespace DataAccessLayer
             {
                 try
                 {
-                    var existingStudent = db.Students.FirstOrDefault(x => x.Idstudent == student.Idstudent);
+                    var existingStudent = db.Students
+                                            .Include(s => s.StudentClasses)
+                                            .FirstOrDefault(x => x.Idstudent == student.Idstudent);
+
                     if (existingStudent != null)
                     {
+                        db.StudentClasses.RemoveRange(existingStudent.StudentClasses);
                         db.Students.Remove(existingStudent);
                         db.SaveChanges();
                     }
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception(ex.Message);
+                    throw new Exception("Error while deleting student and related records: " + ex.Message);
                 }
             }
         }

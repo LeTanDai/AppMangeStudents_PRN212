@@ -28,14 +28,15 @@ namespace WPFApp
         private readonly IStudentRepository _studentRepository;
         private readonly IClassRepository _classRepository;
         private readonly ISubjectRepository _subjectRepository;
-        public TeacherUpdateScore()
+        private Teacher teachers;
+        public TeacherUpdateScore(Teacher teacher)
         {
-            InitializeComponent();
             InitializeComponent();
             _studentRepository = new StudentRepository();
             _markRepository = new MarkRepository();
             _classRepository = new ClassRepository();
             _subjectRepository = new SubjectRepository();
+            this.teachers = teacher;
         }
         public void loadMarkList()
         {
@@ -102,6 +103,7 @@ namespace WPFApp
             LoadSubjectList();
             loadMarkList();
         }
+
         private void dgData_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (dgData.SelectedItem == null)
@@ -129,6 +131,8 @@ namespace WPFApp
                     txtStudentFEScore.Text = selectedMark.FinalExam.ToString();
                     txtStudentPEScore.Text = selectedMark.PracticalExam.ToString();
                     txtStudentTotalScore.Text = selectedMark.Total.ToString();
+                    txtSubjectId.Text = selectedMark.Idsubject.ToString();
+                    txtSem.Text = selectedMark.Semester.ToString();
 
                     // Display the student's name in the correct field
                     txtStudentName.Text = selectedStudent.Name; // Make sure you have a TextBox to display the student name
@@ -293,8 +297,8 @@ namespace WPFApp
                         FinalExam = float.TryParse(txtStudentFEScore.Text, out float finalExam) ? finalExam : 0f,
                         PracticalExam = float.TryParse(txtStudentPEScore.Text, out float practicalExam) ? practicalExam : 0f,
                         Total = float.TryParse(txtStudentTotalScore.Text, out float total) ? total : 0f,
-                        Idsubject = selectedSubject,
-                        Semester = _markRepository.GetSemById(idStudent),
+                        Idsubject = txtSubjectId.Text,
+                        Semester = txtSem.Text,
                         SchoolYear = _markRepository.GetSchoolYearById(idStudent)
                     };
 
@@ -379,6 +383,51 @@ namespace WPFApp
         private void txtStudentclassName_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void txtSubjectIdScore_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Btn_Info(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            TeacherInformation teacher = new TeacherInformation(teachers);
+            teacher.Show();
+        }
+
+        private void Btn_Search(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            SearchStudent searchStudent = new SearchStudent(teachers);
+            searchStudent.Show();
+        }
+
+        private void Btn_MngClass(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            ManageClassTeacher teacher = new ManageClassTeacher(teachers);
+            teacher.Show();
+        }
+
+        private void Btn_MngStudent(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            TeacherManageStudent teacher = new TeacherManageStudent(teachers);
+            teacher.Show();
+        }
+
+        private void Btn_UpdateScore(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            LoginWindow window = new LoginWindow(); 
+            window.Show();
         }
 
         // Window loaded event

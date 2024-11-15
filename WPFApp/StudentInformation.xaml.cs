@@ -23,26 +23,26 @@ namespace WPFApp
     public partial class StudentInformation : Window
     {
         private readonly IStudentService Service;
-        private Student student;
+        private Student currentStudent;
         public StudentInformation( Student student )
         {
             this.Service = new StudentService();
-            this.student = student;
+            this.currentStudent = student;
             InitializeComponent();
         }
         private void Window_Loaded( object sender, RoutedEventArgs e )
         {
-            studentdob.Text = student.BirthDay.ToString();
-            studentemail.Text = student.Email.ToString();
-            studentgender.Text = student.Gender.ToString();
-            studentid.Text = student.Idstudent.ToString();
-            studentname.Text = student.Name.ToString();
-            studentphone.Text = student.Phone.ToString();
+            studentdob.Text = currentStudent.BirthDay.ToString();
+            studentemail.Text = currentStudent.Email.ToString();
+            studentgender.Text = currentStudent.Gender.ToString();
+            studentid.Text = currentStudent.Idstudent.ToString();
+            studentname.Text = currentStudent.Name.ToString();
+            studentphone.Text = currentStudent.Phone.ToString();
         }
 
         private void btnEdit_click(object sender, RoutedEventArgs e)
         {
-            EditStudentInformation editStudentInformation = new EditStudentInformation(student.Idstudent);
+            EditStudentInformation editStudentInformation = new EditStudentInformation(currentStudent.Idstudent);
             this.Hide();
             editStudentInformation.Show();
         }
@@ -54,12 +54,21 @@ namespace WPFApp
 
         private void Btn_Info(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void btn_Score(object sender, RoutedEventArgs e)
         {
+            this.Close();
+            StudentViewScore studentViewScore  = new StudentViewScore(currentStudent);
+            studentViewScore.Show();
+        }
 
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
         }
     }
 }

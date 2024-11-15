@@ -23,18 +23,18 @@ namespace WPFApp
     {
         private readonly IClassService iClassService;
         private Class? selectedClass;
-        private Admin admin = new Admin();
+        private Admin currentAdmin = new Admin();
         public ManageClassAdmin(Admin admin)
         {
             InitializeComponent();
             iClassService = new ClassService();
-            this.admin = admin;
+            this.currentAdmin = admin;
             if (iClassService == null)
             {
                 MessageBox.Show("Service is null");
             }
 
-            this.admin = admin;
+            this.currentAdmin = admin;
         }
 
         private void LoadClassList()
@@ -136,9 +136,54 @@ namespace WPFApp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AdminInformation adminInformation = new AdminInformation(admin);
+            AdminInformation adminInformation = new AdminInformation(currentAdmin);
             this.Hide();
             adminInformation.Show();
+        }
+
+        private void Btn_MngAssign(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            ManageAssignAdmin admin = new ManageAssignAdmin(currentAdmin);
+            admin.Show();
+        }
+
+        private void btn_MngStudent(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            ManageStudentAdmin admin = new ManageStudentAdmin(currentAdmin); admin.Show();
+        }
+
+        private void Btn_MngTeacher(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            ManageTeacherAdmin admin = new ManageTeacherAdmin(currentAdmin);
+            admin.Show();
+        }
+
+        private void Btn_MngClass(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn_MngSubject(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            ManageSubjectAdmin admin = new ManageSubjectAdmin(currentAdmin); admin.Show();
+        }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+        }
+
+        private void Btn_Info(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            AdminInformation admin = new AdminInformation(currentAdmin);
+            admin.Show();
         }
     }
 }

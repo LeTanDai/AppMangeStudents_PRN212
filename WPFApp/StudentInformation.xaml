@@ -36,7 +36,7 @@
             <Button FontSize="17" Background="#FF222222" BorderThickness="0" Foreground="LightGray" Click="btn_Score" Margin="0,0,0,50">
                 <StackPanel Orientation="Horizontal" Width="210">
                     <Image Source="/Images/icons/myscore.png" Height="34" Width="44" RenderTransformOrigin="-0.146,0.601"/>
-                    <TextBlock FontSize="22" Text="My Score" Height="30" Width="160"/>
+                    <TextBlock FontSize="22" Text="My Score" Height="30" Width="152"/>
                 </StackPanel>
             </Button>
 
@@ -99,5 +99,11 @@
                 </StackPanel>
             </Button>
         </WrapPanel>
+        <Button Padding="0" Name="logout"  HorizontalAlignment="Left" Margin="315,27,0,18" Background="#E74C3C" Click="btnLogout_Click" BorderBrush="{x:Null}" Width="92" Height="35" Grid.Column="2">
+            <StackPanel Orientation="Horizontal" Width="92">
+                <TextBlock Height="20" Margin="8,0,0,0">Log out</TextBlock>
+                <Image Source="/Images/Icons/logout_btn.png" Height="27" Width="40" Margin="-10,0,0,0"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
     </Grid>
 </Window>

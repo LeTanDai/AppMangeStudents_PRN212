@@ -40,16 +40,6 @@ namespace WPFApp
             teacherphone.Text = teach.Phone.ToString();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void btnEdit_click(object sender, RoutedEventArgs e)
         {
             EditTeacherInformation editTeacherInformation = new EditTeacherInformation(teach.Idteacher);
@@ -61,5 +51,45 @@ namespace WPFApp
         {
             this.Close();
         }
+
+        private void Btn_Info(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn_Search(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            SearchStudent searchStudent = new SearchStudent(teach);
+            searchStudent.Show();
+        }
+
+        private void Btn_UpdateScore(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            TeacherUpdateScore teacherUpdateScore = new TeacherUpdateScore(teach);
+            teacherUpdateScore.Show();
+        }
+
+        private void Btn_MngClass(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            ManageClassTeacher teacher = new ManageClassTeacher(teach);
+            teacher.Show();
+        }
+
+        private void Btn_MngStudent(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            TeacherManageStudent te = new TeacherManageStudent(teach);
+            te.Show();
+        }
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+        }
+
     }
 }

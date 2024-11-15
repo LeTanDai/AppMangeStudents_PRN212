@@ -12,19 +12,46 @@
     <None Remove="Images\back-image.jpg" />
     <None Remove="Images\back-image1.jpg" />
     <None Remove="Images\bk.jpg" />
+    <None Remove="Images\icons\adduser.png" />
+    <None Remove="Images\icons\adduser_avatar.png" />
     <None Remove="Images\icons\admin_avatar.png" />
+    <None Remove="Images\icons\admin_icon_white.png" />
     <None Remove="Images\icons\done_btn.png" />
     <None Remove="Images\icons\edit_btn.png" />
+    <None Remove="Images\icons\icons8-book-64.png" />
     <None Remove="Images\icons\loading-arrow.png" />
+    <None Remove="Images\icons\logout_btn.png" />
+    <None Remove="Images\icons\logo_app_desktop.png" />
+    <None Remove="Images\icons\logo_icon.png" />
+    <None Remove="Images\icons\logo_icon_white.png" />
+    <None Remove="Images\icons\manageclass.png" />
+    <None Remove="Images\icons\managestudent.png" />
+    <None Remove="Images\icons\managesutdent.png" />
+    <None Remove="Images\icons\manageteacher.png" />
+    <None Remove="Images\icons\manageuser.png" />
     <None Remove="Images\icons\manageuser_avatar.png" />
+    <None Remove="Images\icons\myinformation.png" />
+    <None Remove="Images\icons\myscore.png" />
+    <None Remove="Images\icons\pass_icon.png" />
     <None Remove="Images\icons\remove_btn.png" />
+    <None Remove="Images\icons\report.png" />
+    <None Remove="Images\icons\role.png" />
+    <None Remove="Images\icons\searchstudent.png" />
     <None Remove="Images\icons\student_avatar.png" />
+    <None Remove="Images\icons\student_icon_white.png" />
     <None Remove="Images\icons\teacher_avatar.png" />
+    <None Remove="Images\icons\teacher_icon_white.png" />
+    <None Remove="Images\icons\updatescore.png" />
+    <None Remove="Images\icons\user_icon.png" />
+    <None Remove="Images\icons\viewscore.png" />
     <None Remove="Images\logo_1.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\icons\adduser.png" />
+    <Resource Include="Images\icons\adduser_avatar.png" />
     <Resource Include="Images\icons\admin_avatar.png" />
+    <Resource Include="Images\icons\admin_icon_white.png" />
     <Resource Include="Images\icons\done_btn.png" />
   </ItemGroup>
 
@@ -55,15 +82,36 @@
     <Resource Include="Images\back-image1.jpg" />
     <Resource Include="Images\bk.jpg" />
     <Resource Include="Images\icons\edit_btn.png" />
+    <Resource Include="Images\icons\icons8-book-64.png" />
     <Resource Include="Images\icons\loading-arrow.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\icons\logout_btn.png" />
+    <Resource Include="Images\icons\logo_app_desktop.png" />
+    <Resource Include="Images\icons\logo_icon.png" />
+    <Resource Include="Images\icons\logo_icon_white.png" />
+    <Resource Include="Images\icons\manageclass.png" />
+    <Resource Include="Images\icons\managestudent.png" />
+    <Resource Include="Images\icons\managesutdent.png" />
+    <Resource Include="Images\icons\manageteacher.png" />
+    <Resource Include="Images\icons\manageuser.png" />
     <Resource Include="Images\icons\manageuser_avatar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\icons\myinformation.png" />
+    <Resource Include="Images\icons\myscore.png" />
+    <Resource Include="Images\icons\pass_icon.png" />
     <Resource Include="Images\icons\remove_btn.png" />
+    <Resource Include="Images\icons\report.png" />
+    <Resource Include="Images\icons\role.png" />
+    <Resource Include="Images\icons\searchstudent.png" />
     <Resource Include="Images\icons\student_avatar.png" />
+    <Resource Include="Images\icons\student_icon_white.png" />
     <Resource Include="Images\icons\teacher_avatar.png" />
+    <Resource Include="Images\icons\teacher_icon_white.png" />
+    <Resource Include="Images\icons\updatescore.png" />
+    <Resource Include="Images\icons\user_icon.png" />
+    <Resource Include="Images\icons\viewscore.png" />
     <Resource Include="Images\logo_1.png" />
   </ItemGroup>
 

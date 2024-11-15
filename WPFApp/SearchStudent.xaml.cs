@@ -1,27 +1,36 @@
 ﻿using BusinessObjects.Models;
-using Microsoft.IdentityModel.Tokens;
-using Repositories;
 using Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
 namespace WPFApp
 {
-    public partial class TeacherSearchStudent : Page
+    /// <summary>
+    /// Interaction logic for SearchStudent.xaml
+    /// </summary>
+    public partial class SearchStudent : Window
     {
         private readonly IStudentService _studentService;
         private readonly IStudentClassService _studentClassService;
-
-        public TeacherSearchStudent()
+        private readonly Teacher teach;
+        public SearchStudent(Teacher teacher)
         {
             InitializeComponent();
             _studentService = new StudentService();
             _studentClassService = new StudentClassService();
+            this.teach = teacher;
         }
-
         private void Window_Loaded_Student(object sender, RoutedEventArgs e)
         {
             LoadClasses();
@@ -173,7 +182,11 @@ namespace WPFApp
             listviewStudent.ItemsSource = students;
         }
 
+        private void btn_Return_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            TeacherInformation teacher = new TeacherInformation(teach);
+            teacher.Show();
+        }
     }
-
-
 }

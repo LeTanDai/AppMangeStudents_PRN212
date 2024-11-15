@@ -5,95 +5,120 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded"
-            Title="Teacher Information" Height="650" Width="1000">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="350"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="80"/>
-        </Grid.RowDefinitions>
-        <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="7" Background="DarkSlateGray" Width="200" VerticalAlignment="Stretch">
-            <StackPanel Margin="10">
-                <Image Source="C:\Users\Admin\source\repos\AppManageBackup\WPFApp\Images\logo_1.png" Width="100" Height="100" HorizontalAlignment="Center"/>
-                <TextBlock Text="Nguyễn Văn Hoàng Phúc" Foreground="White" FontWeight="Bold" FontSize="14" TextAlignment="Center"/>
-                <TextBlock Text="Teacher FPTU" Foreground="White" FontSize="12" TextAlignment="Center"/>
-            </StackPanel>
-            <StackPanel Margin="10" VerticalAlignment="Top">
-                <Button Content="My Information" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
-                <Button Content="Search Student" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
-                <Button Content="Update Score" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
-                <Button Content="Add Student" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
-                <Button Content="Manage Classes" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
-                <Button Content="Manage Students" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
-                <Button Content="Manage Teachers" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
-                <Button Content="Report" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
-                <Button Content="Regulations" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
-            </StackPanel>
-        </StackPanel>
-        <StackPanel Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Grid>
-                <Ellipse Width="166" Height="166">
-                    <Ellipse.Fill>
-                        <ImageBrush ImageSource="\Images\icons\admin_avatar.png" Stretch="UniformToFill"/>
-                    </Ellipse.Fill>
-                </Ellipse>
+    Title="Dashboard Teacher" Height="768" Width="1366" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="Transparent">
+    <Border Background="#fff" CornerRadius="0" BorderBrush="#00a7ee" BorderThickness="1.5">
+        <Grid Background="LightGray">
+
+            <Frame x:Name="GridPrincipal" Margin="305,144,30,30" NavigationUIVisibility="Hidden" Background="#fff" Width="1028" Height="591"/>
+
+            <Grid Width="275" HorizontalAlignment="Left" Background="#FF222222" Margin="0,75,0,0">
+                <Label VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="18" Foreground="#fff" Content="Teacher" Background="#039866" HorizontalAlignment="Center" Height="75" Margin="0,-75,0,0" VerticalAlignment="Top" Width="275" FontWeight="Bold" />
+                <Button FontSize="17" Margin="10,76,38,505" Background="#FF222222" BorderThickness="0" Foreground="LightGray" Click="Btn_Info">
+                    <StackPanel Orientation="Horizontal" Width="210">
+                        <Image Source="/Images/Icons/myinformation.png" Height="34" Width="44" RenderTransformOrigin="-0.146,0.601"/>
+                        <TextBlock FontSize="22" Text="My Information" Height="30" Width="160"/>
+                    </StackPanel>
+                </Button>
+                <Button FontSize="17" Margin="10,158,38,423" Background="#FF222222" BorderThickness="0" Foreground="LightGray" Click="Btn_Search">
+                    <StackPanel Orientation="Horizontal" Width="210">
+                        <Image Source="/Images/Icons/searchstudent.png" Height="34" Width="44" RenderTransformOrigin="-0.146,0.601"/>
+                        <TextBlock FontSize="22" Text="Search Student" Height="30" Width="160"/>
+                    </StackPanel>
+                </Button>
+                <Image Source="/Images/Icons/teacher_avatar.png" Margin="10,19,0,0" Width="60" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top"></Image>
+
+                <Label  BorderThickness="0" Name="class_title" FontSize="25" Foreground="#fff" Content="Teacher" HorizontalAlignment="Left" Margin="85,27,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="190" />
+
+                <Button FontSize="17" Margin="10,246,38,341" Background="#FF222222" BorderThickness="0" Foreground="LightGray" Click="Btn_UpdateScore">
+                    <StackPanel Orientation="Horizontal" Width="210">
+                        <Image Source="/Images/Icons/updatescore.png" Height="34" Width="44" RenderTransformOrigin="-0.146,0.601"/>
+                        <TextBlock FontSize="22" Text="Update Score" Height="30" Width="160"/>
+                    </StackPanel>
+                </Button>
+                <Button FontSize="17" Margin="10,328,38,259" Background="#FF222222" BorderThickness="0" Foreground="LightGray" Click="Btn_MngClass">
+                    <StackPanel Orientation="Horizontal" Width="210">
+                        <Image Source="/Images/Icons/manageclass.png" Height="34" Width="44" RenderTransformOrigin="-0.146,0.601"/>
+                        <TextBlock FontSize="22" Text="Manage Class" Height="30" Width="160"/>
+                    </StackPanel>
+                </Button>
+                <Button FontSize="17" Margin="10,410,38,177" Background="#FF222222" BorderThickness="0" Foreground="LightGray" Click="Btn_MngStudent">
+                    <StackPanel Orientation="Horizontal" Width="210">
+                        <Image Source="/Images/Icons/managestudent.png" Height="34" Width="44" RenderTransformOrigin="-0.146,0.601"/>
+                        <TextBlock FontSize="22" Text="Manage Student" Height="30" Width="160"/>
+                    </StackPanel>
+                </Button>
             </Grid>
-            <Label Content="I'm" FontSize="36" FontWeight="Bold" Width="72" Height="54" />
-            <TextBox CharacterCasing="Upper" BorderThickness="0" IsReadOnly="True" x:Name="teachername" FontSize="36" FontWeight="Bold" Height="54"/>
-        </StackPanel>
-        <StackPanel Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" >
-            <WrapPanel Grid.Column="2" Grid.Row="1" Margin="0,0,30,30">
-                <Label Content="ID:" FontSize="20" FontWeight="Bold"/>
-                <TextBox CharacterCasing="Upper" BorderThickness="0" IsReadOnly="True" x:Name="teacherid" FontSize="20" />
-            </WrapPanel>
-            <WrapPanel Grid.Column="2" Grid.Row="1"  Margin="0,0,30,30">
-                <Label Content="Date of birth:" FontSize="20" FontWeight="Bold" />
-                <TextBox BorderThickness="0" IsReadOnly="True" x:Name="teacherdob" FontSize="20"/>
-            </WrapPanel>
-            <WrapPanel Grid.Column="2" Grid.Row="1"  Margin="0,0,30,30">
-                <Label Content="Gender:" FontSize="20" FontWeight="Bold" />
-                <TextBox BorderThickness="0" IsReadOnly="True" x:Name="teachergender" FontSize="20" Width="72" RenderTransformOrigin="0.5,0.5">
-                    <TextBox.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform Angle="0.006"/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </TextBox.RenderTransform>
-                </TextBox>
-            </WrapPanel>
-            <WrapPanel Grid.Column="2" Grid.Row="1"  Margin="0,0,30,30">
-                <Label Content="Email:" FontSize="20" FontWeight="Bold" RenderTransformOrigin="-0.098,0.52" />
-                <TextBox BorderThickness="0" IsReadOnly="True" x:Name="teacheremail" FontSize="20" />
-            </WrapPanel>
-            <WrapPanel Grid.Column="2" Grid.Row="1"  Margin="0,0,30,30">
-                <Label Content="Phone Number:" FontSize="20" FontWeight="Bold"/>
-                <TextBox BorderThickness="0" IsReadOnly="True" x:Name="teacherphone" FontSize="20"/>
-            </WrapPanel>
-        </StackPanel>
-        <Rectangle Fill="DarkSlateGray" HorizontalAlignment="Left" Height="80" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Width="1045"/>
-        <Rectangle Fill="DarkSlateGray" HorizontalAlignment="Left" Height="80" Margin="-69,0,0,0" VerticalAlignment="Top" Width="869" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"  />
-        <WrapPanel Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" Margin="20" Height="60" VerticalAlignment="Center">
-            <Button Padding="0" x:Name="btnEdit" Width="70" Click="btnEdit_click" Margin="10" >
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="/Images/icons/edit_btn.png" Margin="-2,0,0,0" Height="25" Width="25"/>
-                    <TextBlock Margin="2,0,0,0" Height="20"><Run Text="Edit"/></TextBlock>
+            <Rectangle Fill="#fff" HorizontalAlignment="Left" Height="75" Margin="275,0,0,0" VerticalAlignment="Top" Width="1088"/>
+            <Button Padding="0" Name="logout"  HorizontalAlignment="Center" Margin="1262,0,9,669" Background="#E74C3C" Click="btnLogout_Click" BorderBrush="{x:Null}" Width="92" Height="35">
+                <StackPanel Orientation="Horizontal" Width="92">
+                    <TextBlock Height="20" Margin="8,0,0,0">Log out</TextBlock>
+                    <Image Source="/Images/Icons/logout_btn.png" Height="27" Width="40" Margin="-10,0,0,0"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
                 </StackPanel>
             </Button>
-            <Button x:Name="btnCancel" Width="75" Click="btnCancel_click" Background="#FFF32121" BorderBrush="#FFF32121" Margin="10">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="/Images/icons/remove_btn.png" Margin="-2,0,0,0" Height="25" Width="25"/>
-                    <TextBlock Margin="2,0,0,0" Height="20"><Run Text="Cancel"/></TextBlock>
+            <Label Content="My Information" HorizontalAlignment="Left" Margin="305,21,0,0" VerticalAlignment="Top" FontSize="17" FontWeight="Bold"/>
+            <StackPanel  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="373,286,0,0">
+                <Grid>
+                    <Ellipse Width="200" Height="200">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="/Images/Icons/admin_avatar.png" Stretch="UniformToFill"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Grid>
+                <Label Content="I'm" FontSize="36" FontWeight="Bold" Width="72" Height="54" />
+                <TextBox CharacterCasing="Upper" BorderThickness="0" IsReadOnly="True" x:Name="teachername" FontSize="36" FontWeight="Bold" Height="54"/>
+            </StackPanel>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="350"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="80"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,163,0,0" >
+                    <WrapPanel Grid.Column="2" Grid.Row="1" Margin="0,0,30,30">
+                        <Label Content="ID:" FontSize="25" FontWeight="Bold"/>
+                        <TextBox CharacterCasing="Upper" BorderThickness="0" IsReadOnly="True" x:Name="teacherid" FontSize="25" />
+                    </WrapPanel>
+                    <WrapPanel Grid.Column="2" Grid.Row="1"  Margin="0,0,30,30">
+                        <Label Content="Date of birth:" FontSize="25" FontWeight="Bold" />
+                        <TextBox BorderThickness="0" IsReadOnly="True" x:Name="teacherdob" FontSize="25"/>
+                    </WrapPanel>
+                    <WrapPanel Grid.Column="2" Grid.Row="1"  Margin="0,0,30,30">
+                        <Label Content="Gender:" FontSize="25" FontWeight="Bold" />
+                        <TextBox BorderThickness="0" IsReadOnly="True" x:Name="teachergender" FontSize="25" Width="102" RenderTransformOrigin="0.5,0.5">
+                            <TextBox.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="0.006"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </TextBox.RenderTransform>
+                        </TextBox>
+                    </WrapPanel>
+                    <WrapPanel Grid.Column="2" Grid.Row="1"  Margin="0,0,30,30">
+                        <Label Content="Email:" FontSize="25" FontWeight="Bold" RenderTransformOrigin="-0.098,0.52" />
+                        <TextBox BorderThickness="0" IsReadOnly="True" x:Name="teacheremail" FontSize="25" />
+                    </WrapPanel>
+                    <WrapPanel Grid.Column="2" Grid.Row="1"  Margin="0,0,30,30">
+                        <Label Content="Phone Number:" FontSize="25" FontWeight="Bold"/>
+                        <TextBox BorderThickness="0" IsReadOnly="True" x:Name="teacherphone" FontSize="25"/>
+                    </WrapPanel>
                 </StackPanel>
-            </Button>
-        </WrapPanel>
-    </Grid>
+
+                <Button Padding="0" x:Name="btnEdit" Click="btnEdit_click" Margin="184,558,417,54" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Images/icons/edit_btn.png" Margin="-2,0,0,0" Height="25" Width="25"/>
+                        <TextBlock Margin="2,0,0,0" Height="20"><Run Text="Edit"/></TextBlock>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </Grid>
+    </Border>
 </Window>

@@ -24,21 +24,21 @@ namespace WPFApp
     public partial class AdminInformation : Window
     {
         private readonly IAdminService Service;
-        private readonly Admin admin;
+        private readonly Admin currentAdmin;
         public AdminInformation( Admin admin )
         {
-            Service = new AdminService();
-            this.admin = admin;
             InitializeComponent();
+            Service = new AdminService();
+            this.currentAdmin = admin;
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            adminname.Text = admin.Name.ToString();
-            adminid.Text = admin.Id.ToString();
-            admindob.Text = admin.BirthDay.ToString();
-            admingender.Text = admin.Gender.ToString();
-            adminemail.Text = admin.Email.ToString();
-            adminphone.Text = admin.Phone.ToString();
+            adminname.Text = currentAdmin.Name.ToString();
+            adminid.Text = currentAdmin.Id.ToString();
+            admindob.Text = currentAdmin.BirthDay.ToString();
+            admingender.Text = currentAdmin.Gender.ToString();
+            adminemail.Text = currentAdmin.Email.ToString();
+            adminphone.Text = currentAdmin.Phone.ToString();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -53,7 +53,7 @@ namespace WPFApp
 
         private void btnEdit_click(object sender, RoutedEventArgs e)
         {
-            EditadminInformation editadminInformation = new EditadminInformation(admin.Id);
+            EditadminInformation editadminInformation = new EditadminInformation(currentAdmin.Id);
             this.Hide();
             editadminInformation.Show();
         }
@@ -61,6 +61,51 @@ namespace WPFApp
         private void btnCancel_click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Btn_MngAssign(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            ManageAssignAdmin manageAssignAdmin = new ManageAssignAdmin(currentAdmin);
+            this.Hide();
+            manageAssignAdmin.Show();
+        }
+
+        private void btn_MngStudent(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn_MngTeacher(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            ManageTeacherAdmin manage = new ManageTeacherAdmin(currentAdmin);
+            manage.Show();
+        }
+
+        private void Btn_MngClass(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            ManageClassAdmin admin = new ManageClassAdmin(currentAdmin);
+            admin.Show();
+        }
+
+        private void Btn_MngSubject(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            ManageSubjectAdmin admin = new ManageSubjectAdmin(currentAdmin);
+            admin.Show();
+        }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+        }
+
+        private void Btn_Info(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

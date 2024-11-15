@@ -5,77 +5,116 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded"
-        Title="ManageClassAdminWindow" Height="650" Width="1000">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+    Title="Dashboard Admin" Height="768" Width="1366" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="Transparent">
+    <Border Background="#fff" CornerRadius="0" BorderBrush="#00a7ee" BorderThickness="1.5">
+        <Grid Background="LightGray">
 
-        <!-- Sidebar -->
-        <StackPanel Grid.Column="0" Background="DarkSlateGray" Width="200" VerticalAlignment="Stretch">
-            <StackPanel Margin="10">
-                <!-- User Info -->
-                <Image Source="Images/logo_1.png" Width="100" Height="100" HorizontalAlignment="Center"/>
-                <TextBlock Text="Nguyễn Văn Hoàng Phúc" Foreground="White" FontWeight="Bold" FontSize="14" TextAlignment="Center"/>
-                <TextBlock Text="Admin" Foreground="White" FontSize="12" TextAlignment="Center"/>
-            </StackPanel>
+            <Frame x:Name="GridPrincipal" Margin="290,144,10,10" NavigationUIVisibility="Hidden" Background="#fff"/>
 
-            <!-- Menu Items -->
-            <StackPanel Margin="10" VerticalAlignment="Top">
-                <Button Content="My Information" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5" Click="Button_Click"/>
-                <Button Content="Search Student" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
-                <Button Content="Update Score" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
-                <Button Content="Add Student" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
-                <Button Content="Manage Classes" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
-                <Button Content="Manage Students" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
-                <Button Content="Manage Teachers" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
-                <Button Content="Report" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
-                <Button Content="Regulations" Background="Transparent" Foreground="White" BorderBrush="Transparent" HorizontalContentAlignment="Left" Margin="0,5,0,5"/>
-            </StackPanel>
+            <Grid Width="275" HorizontalAlignment="Left" Background="#FF222222" Margin="0,75,0,0">
+                <Label VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="18" Foreground="#fff" Content="Admin" Background="#039866" HorizontalAlignment="Center" Height="75" Margin="0,-75,0,0" VerticalAlignment="Top" Width="275" FontWeight="Bold" />
+                <Button FontSize="17" Margin="10,76,38,505" Background="#FF222222" BorderThickness="0" Foreground="LightGray" Click="Btn_MngAssign">
+                    <StackPanel Orientation="Horizontal" Width="210">
+                        <Image Source="/Images/Icons/role.png" Height="34" Width="44" RenderTransformOrigin="-0.146,0.601"/>
+                        <TextBlock FontSize="22" Text="Manage Assign" Height="30" Width="160"/>
+                    </StackPanel>
+                </Button>
+                <Button FontSize="17" Margin="10,158,38,423" Background="#FF222222" BorderThickness="0" Foreground="LightGray" Click="btn_MngStudent">
+                    <StackPanel Orientation="Horizontal" Width="210">
+                        <Image Source="/Images/Icons/managestudent.png" Height="34" Width="44" RenderTransformOrigin="-0.146,0.601"/>
+                        <TextBlock FontSize="22" Text="Manage Student" Height="30" Width="160"/>
+                    </StackPanel>
+                </Button>
+                <Button FontSize="17" Margin="10,246,38,341" Background="#FF222222" BorderThickness="0" Foreground="LightGray" Click="Btn_MngTeacher">
+                    <StackPanel Orientation="Horizontal" Width="210">
+                        <Image Source="/Images/Icons/manageteacher.png" Height="34" Width="44" RenderTransformOrigin="-0.146,0.601"/>
+                        <TextBlock FontSize="22" Text="Manage Teacher" Height="30" Width="160"/>
+                    </StackPanel>
+                </Button>
+                <Button FontSize="17" Margin="10,333,38,254" Background="#FF222222" BorderThickness="0" Foreground="LightGray" Click="Btn_MngClass">
+                    <StackPanel Orientation="Horizontal" Width="210">
+                        <Image Source="/Images/Icons/manageclass.png" Height="34" Width="44" RenderTransformOrigin="-0.146,0.601"/>
+                        <TextBlock FontSize="22" Text="Manage Class" Height="30" Width="160"/>
+                    </StackPanel>
+                </Button>
+                <Button FontSize="17" Margin="10,425,38,162" Background="#FF222222" BorderThickness="0" Foreground="LightGray" Click="Btn_MngSubject">
+                    <StackPanel Orientation="Horizontal" Width="210" >
+                        <Image Source="/Images/Icons/icons8-book-64.png" Height="34" Width="44" RenderTransformOrigin="-0.146,0.601" OpacityMask="#FFEDE2E2"/>
+                        <TextBlock FontSize="22" Text="Manage Subject" Height="30" Width="160"/>
+                    </StackPanel>
+                </Button>
+                <Button FontSize="17" Margin="10,512,38,75" Background="#FF222222" BorderThickness="0" Foreground="LightGray" Click="Btn_Info">
+                    <StackPanel Orientation="Horizontal" Width="210" >
+                        <Image Source="/Images/Icons/myinformation.png" Height="34" Width="44" RenderTransformOrigin="-0.146,0.601" OpacityMask="#FFEDE2E2"/>
+                        <TextBlock FontSize="22" Text="My Information" Height="30" Width="160"/>
+                    </StackPanel>
+                </Button>
+                <Image Source="/Images/Icons/admin_avatar.png" Margin="10,18,0,0" Width="60" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top"></Image>
 
-            <!-- Logout Button -->
-            <Button Content="Log out" HorizontalAlignment="Center" Margin="0,20,0,0" Background="Transparent" Foreground="Red" BorderBrush="Red"/>
-        </StackPanel>
+                <Label  BorderThickness="0" Name="class_title" FontSize="22" Foreground="#fff" Content="Admin" HorizontalAlignment="Left" Margin="85,28,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="190" />
 
-        <Grid Grid.Column="1" >
+            </Grid>
+            <Rectangle Fill="#fff" HorizontalAlignment="Left" Height="75" Margin="275,0,0,0" VerticalAlignment="Top" Width="1088"/>
+            <Button Padding="0" Name="logout"  HorizontalAlignment="Center" Margin="1262,0,9,669" Background="#E74C3C" Click="btnLogout_Click" BorderBrush="{x:Null}" Width="92" Height="35">
+                <StackPanel Orientation="Horizontal" Width="92">
+                    <TextBlock Height="20" Margin="8,0,0,0">Log out</TextBlock>
+                    <Image Source="/Images/Icons/logout_btn.png" Height="27" Width="40" Margin="-10,0,0,0"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="60"/>
-            </Grid.RowDefinitions>
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="150"/>
-                <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Label x:Name="label1" Margin="2,20,2,2" Content="Class Name" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="txtClassName" Background="LightGray" Margin="4,2,4,2" Grid.Column="2" Grid.Row="0" Text="" TextWrapping="Wrap" Grid.ColumnSpan="2"/>
-
-            <Label x:Name="label2" Margin="2,2,2,2" Grid.Column="0" Grid.Row="1" Content="School Year" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="txtSchoolYear" Background="LightGray" Margin="4,2,4,2" Grid.Column="2" Grid.Row="1" Text="" TextWrapping="Wrap" Grid.ColumnSpan="2"/>
+            <Label Content="Class Management" HorizontalAlignment="Left" Margin="305,21,0,0" VerticalAlignment="Top" FontSize="17" FontWeight="Bold" Width="202"/>
 
 
-            <DataGrid x:Name="dgData" Margin="4,20,4,4" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" SelectionChanged="dgData_SelectionChanged"
-                AutoGenerateColumns="False" CanUserAddRows="False" RowHeight="28">
+
+            <Button x:Name="btnCreate" Content="Add Class" Background="#FF0099FF" BorderBrush="White" Foreground="White" Margin="1118,375,65,310" Click="btnCreate_Click" />
+            <Button x:Name="btnUpdate" Content="Update Student In Class" Background="#FF1B7140" Foreground="White" Margin="1118,489,65,196" Click="btnEditClass_Click" RenderTransformOrigin="0.487,0.412"/>
+            <Button x:Name="btnDelete" Content="Delete Class" Background="#FFC80E0E" Foreground="White" Margin="1118,603,65,82" Click="btnDelete_Click" RenderTransformOrigin="0.487,0.412"/>
+            <Grid Margin="336,113,177,151">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="119.415"/>
+                    <ColumnDefinition Width="30.585"/>
+                    <ColumnDefinition Width="47*"/>
+                    <ColumnDefinition Width="513*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <Label x:Name="label1" Margin ="2,2,2,2"  Content="Class Name" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" FontSize="22"/>
+                <TextBox x:Name="txtClassName" Margin ="4,4,4,4" Grid.Column="2" Grid.Row="2" Text="" TextWrapping="Wrap" Grid.ColumnSpan="2" FontSize="22"/>
+
+                <Label x:Name="label2" Margin ="2,2,2,2" Grid.Column="0" Grid.Row="3" Content="Year" Grid.ColumnSpan="2" FontSize="22"/>
+                <TextBox x:Name="txtSchoolYear" Margin ="4,4,4,4" Grid.Column="2" Grid.Row="3" Text="" TextWrapping="Wrap" Grid.ColumnSpan="2" FontSize="22"/>
+
+
+            </Grid>
+            <DataGrid x:Name="dgData" AutoGenerateColumns="False" Margin ="336,338,301,0" SelectionChanged="dgData_SelectionChanged"  VerticalAlignment="Top" Height="359" RenderTransformOrigin="0.5,0.5" >
+                <DataGrid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleY="-0.081"/>
+                        <RotateTransform/>
+                        <TranslateTransform Y="-0.499"/>
+                    </TransformGroup>
+                </DataGrid.RenderTransform>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Class Name" Binding="{Binding NameClass}" Width="*" />
-                    <DataGridTextColumn Header="School Year" Binding="{Binding SchoolYear}" Width="*" />
+                    <DataGridTextColumn Header="Class Name" Binding="{Binding NameClass}" Width="250"/>
+                    <DataGridTextColumn Header="Year" Binding="{Binding SchoolYear}" Width="450"/>
                 </DataGrid.Columns>
             </DataGrid>
 
-            <StackPanel Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,10">
-                <Button x:Name="btnCreate" Content="Create" Width="150" Height="50" Background="#FF0099FF" BorderBrush="White" Foreground="White" Margin="10,0,10,0" Click="btnCreate_Click"/>
-                
-                <Button x:Name="btnDelete" Content="Delete" Width="150" Height="50" Background="#FFA2AA3D" Foreground="White" Margin="10,0,10,0" Click="btnDelete_Click"/>
-                <Button x:Name="btnEditClass" Content="Edit Class" Width="150" Height="50" Background="Purple" Foreground="White" Margin="10,0,10,0" Click="btnEditClass_Click"/>
-                
-            </StackPanel>
+
         </Grid>
-    </Grid>
+    </Border>
 </Window>

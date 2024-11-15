@@ -22,11 +22,12 @@ namespace WPFApp
     public partial class ManageTeacherAdmin : Window
     {
         private readonly ITeacherService iTeacherService;
-
-        public ManageTeacherAdmin()
+        private readonly Admin currentAdmin;
+        public ManageTeacherAdmin(Admin admin)
         {
             InitializeComponent();
             iTeacherService = new TeacherService();
+            currentAdmin = admin;
             if(iTeacherService == null)
             {
                 MessageBox.Show("Service is null");
@@ -186,7 +187,8 @@ namespace WPFApp
                     Email = string.IsNullOrEmpty(txtEmail.Text) ? null : txtEmail.Text,
                     Phone = string.IsNullOrEmpty(txtPhone.Text) ? null : txtPhone.Text,
                     BirthDay = dpTeacherBirthday.SelectedDate.HasValue ? DateOnly.FromDateTime(dpTeacherBirthday.SelectedDate.Value) : null,
-                    IsActive = cbxIsActive.SelectedItem is ComboBoxItem selectedActive ? selectedActive.Content.ToString() : null
+                    IsActive = cbxIsActive.SelectedItem is ComboBoxItem selectedActive ? selectedActive.Content.ToString() : null,
+                    PassWord = "123"
                 };
 
                 iTeacherService.CreateTeacher(teacher);
@@ -199,6 +201,54 @@ namespace WPFApp
             {
                 LoadTeacherList();
             }
+        }
+
+        private void Btn_MngAssign(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            ManageAssignAdmin admin = new ManageAssignAdmin(currentAdmin);
+            admin.Show();
+        }
+
+        private void btn_MngStudent(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            ManageStudentAdmin admin = new ManageStudentAdmin(currentAdmin);
+            admin.Show();
+        }
+
+        private void Btn_MngTeacher(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            ManageTeacherAdmin admin = new ManageTeacherAdmin(currentAdmin);
+            admin.Show();
+        }
+
+        private void Btn_MngClass(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            ManageClassAdmin admin = new ManageClassAdmin(currentAdmin); admin.Show();
+        }
+
+        private void Btn_MngSubject(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            ManageSubjectAdmin admin = new ManageSubjectAdmin(currentAdmin);
+            admin.Show();
+        }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+        }
+
+        private void Btn_Info(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            AdminInformation admin = new AdminInformation(currentAdmin);
+            admin.Show();
         }
     }
 }

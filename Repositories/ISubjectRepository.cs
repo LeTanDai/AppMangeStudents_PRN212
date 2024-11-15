@@ -11,5 +11,8 @@ namespace Reppositories
     public interface ISubjectRepository
     {
         IEnumerable<Subject> GetAllSubjects();
+        void AddSubject(Subject subject);
+        void UpdateSubject(Subject subject);
+        Subject GetSubject(string id);
     }
 }
